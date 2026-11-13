@@ -1,0 +1,40 @@
+## DICT
+# ---- seen in game on 2026-11-13 ----
+# "Mateke is helemaal geen duits jonge": "duits" fell through to "duit" (money)
+duits | duitse | duitser | duitsers | mof | moffen = german | germans
+engels | engelse | engelsman | engelsen | brit | britten = english | british
+frans | franse | fransman | fransen | fransoos = french
+spaans | spaanse | spanjaard | spanjaarden = spanish
+italiaans | italiaanse | italiaan | italianen = italian
+portugees | portugese | portugezen = portuguese
+pools | poolse | polen | pool = polish | poles
+russisch | russische | rus | russen = russian | russians
+zweeds | zweedse | zweed | zweden = swedish | swedes
+noors | noorse | noor | noren = norwegian
+deens | deense | deen | denen = danish | danes
+fins | finse | fin | finnen = finnish | finns
+turks | turkse | turk | turken = turkish | turks
+oekraïens | oekraiens | oekraïense | oekraïner = ukrainian
+chinees | chinese | chinezen = chinese
+koreaans | koreaanse | koreaan = korean
+japans | japanse | japanner = japanese
+belg | belgen | belgisch | belgische | vlaming | vlamingen | vlaams | vlaamse = belgian | flemish
+hollander | hollanders | hollands | hollandse | nederlander | nederlanders | kaaskop | kaaskoppen = dutch | dutchman
+buitenlander | buitenlanders | buitenlands | buitenlandse = foreigner | foreign
+jonge | jongeh | jongee | jonguh | jow = ~
+helemaal niet | egt niet | echt niet | totaal niet | absoluut niet | geen sprake van | no way | nee joh | nee man = not at all | no way
+helemaal = at all | completely | totally
+geen | gn | geeneen | geen een | geen enkele | geen enkel = no | none | not a single
+spreek je | praat je | kun je | ken je | snap je | versta je = do you speak | do you understand
+spreekt | praat = speaks
+## PATTERNS
+is helemaal geen * | is egt geen * | is echt geen * | is totaal geen * = isn't * at all
+helemaal geen * | echt geen * | egt geen * | totaal geen * | absoluut geen * = no * at all
+spreekt iemand * | spreekt er iemand * | spreekt hier iemand * | is er iemand die * spreekt | is hier iemand die * spreekt | iemand hier die * spreekt | iemand die * spreekt | iemand die * kan | iemand * hier = does anyone speak *
+spreek je * | praat je * | spreken jullie * | spreek jij * | kun je * | kan je * = do you speak *
+ik spreek geen * | ik praat geen * | kan geen * | ik kan geen * | spreek geen * | ik versta geen * | ik snap geen * = I don't speak *
+## TEST
+mateke is helemaal geen duits jonge => mateke isn't german at all man
+spreek je engels? => do you speak english
+iemand hier die nederlands spreekt => does anyone speak dutch
+ik spreek geen frans joh => I don't speak french

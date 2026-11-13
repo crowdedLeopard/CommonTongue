@@ -1,0 +1,8 @@
+## DICT
+# ---- replay pass (2026-11-13) ----
+gesprochen = spoken
+## PATTERNS
+hier wird * gesprochen = * is spoken here
+wird * gesprochen = * is spoken
+## TEST
+Hier wird Englisch gesprochen! => english is spoken here

@@ -1,0 +1,106 @@
+]==])
+
+-- suffix > infinitive ending = English template
+-- French always writes the subject pronoun (je, tu, il, on ...), so most forms
+-- give the bare verb and the pronoun comes from the dictionary.
+L:Conjugation([==[
+# -er: present, imperative
+e > er = %s
+es > er = you %s
+ent > er = %s
+ons > er = we %s
+ez > er = you %s
+# -er: passé composé participle
+é > er = %en
+ée > er = %en
+és > er = %en
+ées > er = %en
+# -er: imparfait
+ais > er = was %ing
+ait > er = was %ing
+aient > er = were %ing
+ions > er = we were %ing
+iez > er = you were %ing
+# -er: futur, conditionnel
+erai > er = will %s
+eras > er = will %s
+era > er = will %s
+erons > er = will %s
+erez > er = will %s
+eront > er = will %s
+erais > er = would %s
+erait > er = would %s
+eraient > er = would %s
+erions > er = would %s
+eriez > er = would %s
+# -er: gerund
+ant > er = %ing
+# -ir like finir
+is > ir = %s
+it > ir = %s3
+issons > ir = we %s
+issez > ir = you %s
+issent > ir = %s
+i > ir = %en
+ie > ir = %en
+ies > ir = %en
+issais > ir = was %ing
+issait > ir = was %ing
+issaient > ir = were %ing
+issant > ir = %ing
+irai > ir = will %s
+iras > ir = will %s
+ira > ir = will %s
+irons > ir = will %s
+irez > ir = will %s
+iront > ir = will %s
+irais > ir = would %s
+irait > ir = would %s
+# -ir like partir, ouvrir, venir
+e > ir = %s
+es > ir = you %s
+ons > ir = we %s
+ez > ir = you %s
+ent > ir = %s
+ais > ir = was %ing
+ait > ir = was %ing
+aient > ir = were %ing
+ant > ir = %ing
+u > ir = %en
+ue > ir = %en
+us > ir = %en
+ert > rir = %en
+erte > rir = %en
+iens > enir = %s
+ient > enir = %s3
+iennent > enir = %s
+iendrai > enir = will %s
+iendras > enir = will %s
+iendra > enir = will %s
+iendrons > enir = will %s
+iendrez > enir = will %s
+iendront > enir = will %s
+# -re
+s > re = %s
+t > re = %s3
+d > dre = %s3
+ons > re = we %s
+ez > re = you %s
+ent > re = %s
+u > re = %en
+ue > re = %en
+us > re = %en
+ais > re = was %ing
+ait > re = was %ing
+aient > re = were %ing
+rai > re = will %s
+ras > re = will %s
+ra > re = will %s
+rons > re = will %s
+rez > re = will %s
+ront > re = will %s
+rais > re = would %s
+rait > re = would %s
+ant > re = %ing
+]==])
+

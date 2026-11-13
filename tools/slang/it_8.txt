@@ -1,0 +1,18 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+pullo io | pullo io tranqui | pullo io tranquillo | pullo io raga | tiro io | tanko io = I'll pull | I'll tank
+è andato off | e andato off | andato off | è andato offline | e andato offline | andato offline | è uscito | e uscito | si è disconnesso | si e disconnesso | ha crashato | ha craschato = went offline | disconnected
+cadavere | il cadavere | il mio cadavere | corpo | il corpo | il mio corpo | la salma = corpse | my corpse | body
+mi ha campato | mi campa | mi sta campando | mi campano | mi ha campato il cadavere | mi campa il cadavere | campa il mio cadavere = is camping me | camped my corpse
+mezz'ora | mezzora | mezz ora | per mezz'ora | per mezzora | da mezz'ora | da mezzora = half an hour | for half an hour
+ha pullato tutto | ha pullato tutta la stanza | ha tirato tutto | ha pullato tutti i mob | pulla tutto = pulled everything
+abbiamo wipato | abbiamo wipeato | abbiam wipato | wipati | siamo wipati | wipe totale = we wiped
+prezzo d'amico | prezzo damico | prezzo di favore | prezzo onesto | prezzo buono | a buon prezzo = friend price | good price
+mi boosta | mi boosti | mi boostate | qualcuno mi boosta | qlcn mi boosta | chi mi boosta | mi fa un boost | mi porta = boost me | can someone boost me
+meglio di te | meglio di voi | meglio di lui | meglio di tutti = better than you | better than him | better than everyone
+sei una pippa | sei un pippa | sei una sega | sei scarso | sei scarsa | sei un cesso | fai schifo | fai pena | sei pessimo = you suck | you're a noob
+fra | frà | fratè | fratello | fraté | fratm | fratellì | bro | frate = bro | dude
+ci si becca | ci si becca dp | ci si becca dopo | ci si vede dp | ci si vede dopo | ci becchiamo | ci vediamo dp | a dp | a dopo | adp | ci si vede = see you later | see you
+## TEST
+chi tanka? il pala è andato off, che sbatti => who tanks? paladin went offline, what a hassle
+occhio al ganker, mi ha campato il cadavere x mezz'ora => watch out for ganker, camped my corpse for half an hour

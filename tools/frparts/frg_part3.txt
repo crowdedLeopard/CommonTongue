@@ -1,0 +1,77 @@
+-- Sentence templates. '*' is a slot of one or more words, translated on its own.
+-- Two French habits shape this list:
+--  * "pour" is left to the dictionary instead of being swallowed by a template
+--    ("cherche groupe *" rather than "cherche groupe pour *"): the slot then reads
+--    "for the Deadmines" or, with an infinitive, "to do the Deadmines".
+--  * players often type "a" for "à"; a typed "a" never matches the literal "à",
+--    so templates with "à" also list the unaccented spelling.
+L:Patterns([==[
+# ---- looking for / need ----
+cherche groupe * | cherche grp * | recherche groupe * | ch groupe * | ch grp * | rech groupe * | cherche un groupe * | rech grp * = looking for group *
+je cherche un groupe * | je cherche groupe * | je recherche un groupe * | je cherche un grp * = I'm looking for a group *
+je cherche à * | je cherche a * | cherche à * | cherche a * | on cherche à * | on cherche a * = looking to *
+je cherche * | je recherche * | je suis à la recherche de * | je suis a la recherche de * | j'cherche * = I'm looking for *
+on cherche * | nous cherchons * | on recherche * | nous recherchons * = we're looking for *
+cherche * | recherche * | ch * | rech * = looking for *
+il me faut un * | il me faut une * | j'ai besoin d'un * | j'ai besoin d'une * | j'aurais besoin d'un * | j'aurais besoin d'une * = I need a *
+il me faut * | il me faudrait * | me faut * | j'ai besoin de * | j'aurais besoin de * = I need *
+il nous faut un * | il nous faut une * | on a besoin d'un * | on a besoin d'une * = we need a *
+il nous faut * | il nous faudrait * | on a besoin de * | nous avons besoin de * | on aurait besoin de * = we need *
+besoin d'un * | besoin d'une * | bsn d'un * | bsn d'une * = need a *
+besoin de * | bsn de * = need *
+il manque * | manque * | il nous manque * = need *
+il me manque * | me manque * = I'm missing *
+il manque plus que * | manque plus que * | il ne manque plus que * | il manque que * | manque que * | il reste plus que * = we only need *
+il reste * | il en reste * = * left
+y a quelqu'un * | il y a quelqu'un * | y a qqn * | il y a qqn * | ya quelqu'un * | ya qqn * | y'a quelqu'un * | y'a qqn * = is there anyone *
+guilde * recrute | la guilde * recrute | guilde * recherche | la guilde * recherche | guilde * cherche | la guilde * cherche = guild * is recruiting
+guilde à la recherche de * | guilde a la recherche de * | la guilde à la recherche de * | la guilde a la recherche de * = guild looking for *
+guilde * à la recherche de * | guilde * a la recherche de * | la guilde * à la recherche de * | la guilde * a la recherche de * = guild * looking for *
+recrute * | on recrute * | nous recrutons * | recrutons * = recruiting *
+j'ai envie de * | envie de * | j'ai envie d'un * | j'ai envie d'une * = I want *
+ça te dit de * | ça vous dit de * | ça te dirait de * | ça vous dirait de * | ca te dit de * | ca vous dit de * = do you want *
+ça te dit * | ça vous dit * | ça te tente * | ça vous tente * | ça te dirait * | ça vous dirait * | ca te dit * | ca vous dit * = are you up for *
+
+# ---- questions ----
+quelqu'un sait où est * | qqn sait où est * | quelqu'un sait où se trouve * | qqn sait où se trouve * | qui sait où est * | quelqu'un saurait où est * | qqn saurait où est * | qui sait où se trouve * = does anyone know where * is
+quelqu'un sait où sont * | qqn sait où sont * | qui sait où sont * | quelqu'un sait où se trouvent * | qqn sait où se trouvent * = does anyone know where * are
+quelqu'un sait où * | qqn sait où * | qui sait où * | quelqu'un saurait où * | qqn saurait où * = does anyone know where *
+quelqu'un sait comment * | qqn sait comment * | qui sait comment * | quelqu'un saurait comment * | qqn saurait comment * = does anyone know how *
+quelqu'un sait si * | qqn sait si * | qui sait si * | quelqu'un saurait si * | qqn saurait si * = does anyone know if *
+quelqu'un sait * | qqn sait * | quelqu'un connaît * | qqn connaît * | quelqu'un saurait * | qqn saurait * = does anyone know *
+quelqu'un a * | qqn a * | quelqu'un aurait * | qqn aurait * | y a quelqu'un qui a * | quelqu'un possède * | qq1 a * = does anyone have *
+quelqu'un veut * | qqn veut * | quelqu'un voudrait * | qqn voudrait * | qq1 veut * = does anyone want *
+quelqu'un peut * | qqn peut * | quelqu'un pourrait * | qqn pourrait * | y a quelqu'un qui peut * | qq1 peut * = can anyone *
+quelqu'un peut m'aider * | quelqu'un peut m'aider à * | qqn peut m'aider à * | quelqu'un peut m'aider a * | qqn peut m'aider a * | quelqu'un pourrait m'aider à * | qqn pourrait m'aider à * | quelqu'un pour m'aider à * | quelqu'un pour m'aider a * = can anyone help me *
+quelqu'un peut m'emmener à * | qqn peut m'emmener à * | quelqu'un peut m'emmener a * | qqn peut m'emmener a * | quelqu'un peut m'amener à * | quelqu'un m'emmène à * | qqn m'emmène à * | quelqu'un peut me tp à * = can anyone take me to *
+quelqu'un vend * | qqn vend * | y a quelqu'un qui vend * | quelqu'un vendrait * | qqn vendrait * = is anyone selling *
+quelqu'un achète * | qqn achète * | y a quelqu'un qui achète * = is anyone buying *
+quelqu'un qui * | qqn qui * | des gens qui * = anyone who *
+qui veut * | qui voudrait * | qui veux * = who wants *
+qui a * | qui aurait * = who has *
+qui vend * = who is selling *
+qui achète * = who is buying *
+qui peut * | qui pourrait * = who can *
+qui sait * | qui connaît * = who knows *
+où est * | où se trouve * | où se situe * | c'est où * | il est où * | elle est où * = where is *
+* est où | * c'est où | * se trouve où = where is *
+où sont * | où se trouvent * | ils sont où * = where are *
+* sont où | * se trouvent où = where are *
+où trouver * | où je trouve * | où on trouve * | où je peux trouver * | où est ce que je trouve * | où peut on trouver * | on trouve où * | je trouve où * = where do I get *
+où avoir * | où je peux avoir * | où on peut avoir * | où obtenir * | où on loot * | où drop * | où ça drop * | où récupérer * = where do I get *
+où acheter * | où je peux acheter * | où on achète * | où est ce qu'on achète * | où s'achète * | où s'achètent * | on achète où * = where can I buy *
+comment aller à * | comment on va à * | comment je vais à * | comment aller a * | comment on va a * | comment je vais a * | comment se rendre à * | c'est par où * = how do I get to *
+comment aller au * | comment on va au * | comment je vais au * | comment aller aux * | comment se rendre au * = how do I get to the *
+comment aller dans * | comment on va dans * | comment entrer dans * | comment on entre dans * | comment rentrer dans * | comment on rentre dans * = how do I get into *
+comment faire pour * | comment on fait pour * | comment je fais pour * = how do I *
+comment faire * | comment on fait * | comment je fais * = how do I do *
+comment avoir * | comment on a * | comment obtenir * | comment on obtient * | comment récupérer * | comment on récupère * = how do I get *
+combien pour * | c'est combien * | combien coûte * | combien coûtent * | combien vaut * | à combien * | a combien * | c combien * = how much is *
+* c'est combien | * ça coûte combien | * ça vaut combien | * coûte combien | * c combien = how much is *
+combien tu veux pour * | tu veux combien pour * | combien tu demandes pour * | tu en veux combien pour * | t'en veux combien pour * = how much do you want for *
+combien tu donnes pour * | combien tu paies pour * | tu donnes combien pour * | tu paies combien pour * | combien tu payes pour * = how much will you pay for *
+combien tu vends * | tu vends combien * | à combien tu vends * | a combien tu vends * | tu vends à combien * | tu vends a combien * = how much are you selling *
+c'est quel niveau * | quel niveau est * | quel est le niveau de * | quel est le niveau du * | c quel niveau * | c'est quel lvl * = what level is *
+à quelle heure * | a quelle heure * = what time *
+tu peux * | tu pourrais * | vous pouvez * | vous pourriez * | peux tu * | pouvez vous * | tu peu * | tu peut * = can you *
+tu veux * | vous voulez * | veux tu * | voulez vous * | tu veu * | tu voudrais * = do you want *

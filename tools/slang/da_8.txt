@@ -1,0 +1,18 @@
+## DICT
+# ---- gaps from the slang test lines (2026-11-13) ----
+pr | pr. | per | pr stk | pr styk | per styk | stykket = per | each
+pr stak | per stak | pr stack | per stack | stakken = per stack
+grats | gratz | gz | tillykke | tillykke med det | stort tillykke | grattis = grats | congratulations
+pga | pga. | på grund af | grundet = because of
+stak | stakke | en stak | stack | stacks = stack | stacks
+rummet | hele rummet | rum | et rum = the room | the whole room | room
+frisk på | ngn frisk på | nogen frisk på | er du frisk på | er i friske på | friske på = up for | anyone up for
+ka tanke | kan tanke | ka du tanke | kan du tanke | ngn der ka tanke | nogen der kan tanke = can tank | can you tank | anyone who can tank
+ka heale | kan heale | ka du heale | kan du heale | ngn der ka heale | nogen der kan heale = can heal | can you heal | anyone who can heal
+der ganker | som ganker | der camper | som camper = who ganks | who camps
+leavede | leavede gruppen | forlod gruppen | smuttede | smuttede fra gruppen | droppede ud = left the group | left
+sikke en taber | sikke en noob | sikke en idiot | sikke noget | sikke en = what a loser | what a noob | what an idiot | what a
+tæt på | det var tæt på | tæt på mand | lige ved = close | that was close
+hele rummet | aggroede hele rummet | pullede hele rummet | trak hele rummet = the whole room | aggroed the whole room
+## TEST
+sælger 20 runecloth billigt, 5g pr stak, hb i aften => selling 20 runecloth cheap, 5g per stack

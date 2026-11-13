@@ -1,0 +1,9 @@
+# Normalise line endings: LF for everything, CRLF for Windows batch files.
+*        text=auto eol=lf
+*.bat    text eol=crlf
+
+# Binary assets
+*.tga    binary
+*.blp    binary
+*.png    binary
+*.zip    binary

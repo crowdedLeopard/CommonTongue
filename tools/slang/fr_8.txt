@@ -1,0 +1,21 @@
+## DICT
+# ---- seen in game on 2026-11-13 ----
+l'odeur | lodeur | les odeurs = the smell
+odeur | une odeur | odeurs = smell | smells
+ça sent | ca sent | sa sent = it smells
+ça pue | ca pue | sa pue = it stinks
+j'ete | j'été | jété | jéte | jete | jetais | jétais | j'etais | g été | g ete | j'ai été = I was
+t'ete | t'été | tété | tétais | t'etais | t'étais | tu été | tu ete = you were
+il ete | il été | il etait | elle ete | elle été | elle etait = he was | she was
+on ete | on été | on etait | on était = we were
+je recommençais | je recommencais | recommençais | recommencais | j'recommençais | jrecommençais | jrecommencais = I was restarting
+je recommence | je recommance | recommence | jrecommence = I'm restarting | I restart
+recommencer | recommancer | reco | refaire un perso | refaire un reroll = restart | start again
+j'ai recommencé | j'ai recommencer | j'ai recommencais | j'ai recommençais | jai recommencé | jai recommencer | g recommencé = I restarted
+meilleur | meilleure | meilleurs | meilleures | mieu = better
+un perso | mon perso | perso | persos | mes persos = character | characters
+ici du coup | du coup ici = here then
+## TEST
+l'odeur est meilleur ici du coup haha => the smell is better here so haha
+j'ete un troll druide xd => I was a troll druid xd
+moi aussi j'ai recommencais un perso ici mdr => me too I was restarting a character here lol

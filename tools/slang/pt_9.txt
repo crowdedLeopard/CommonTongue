@@ -1,0 +1,32 @@
+## DICT
+# ---- nationalities and language names (2026-11-13) ----
+alemão | alemao | alemã | alema | alemães | alemaes = german
+inglês | ingles | inglesa | ingleses = english
+francês | frances | francesa | franceses = french
+espanhol | espanhola | espanhóis | espanhois = spanish
+italiano | italiana | italianos = italian
+português | portugues | portuguesa | tuga | tugas = portuguese
+brasileiro | brasileira | brasileiros | brasileiras | brazuca | huehue = brazilian
+polonês | polones | polaco | polonesa = polish
+russo | russa | russos = russian
+sueco | sueca = swedish
+norueguês | noruegues | norueguesa = norwegian
+dinamarquês | dinamarques | dinamarquesa = danish
+finlandês | finlandes | finlandesa = finnish
+turco | turca = turkish
+ucraniano | ucraniana = ukrainian
+chinês | chines | chinesa | chineses = chinese
+coreano | coreana = korean
+japonês | japones | japonesa = japanese
+holandês | holandes | holandesa | neerlandês = dutch
+gringo | gringos | gringa | estrangeiro | estrangeira | estrangeiros = foreigner | foreign
+## PATTERNS
+alguém fala * | alguem fala * | alguém aqui fala * | alguem aqui fala * | tem alguém que fala * | tem alguem que fala * | quem fala * | alguém que fale * | alguem que fale * | tem alguém que fale * = does anyone speak *
+você fala * | vc fala * | tu falas * | falas * | vocês falam * | vcs falam * = do you speak *
+não falo * | nao falo * | n falo * | eu não falo * | eu nao falo * | não falamos * | nao falamos * | não falo nada de * = I don't speak *
+só falo * | so falo * | falo só * | falo so * | eu só falo * | eu so falo * = I only speak *
+em * por favor | em * pfv | em * pf | em * plz | em * pls = in * please
+## TEST
+alguem aqui fala portugues? => does anyone speak portuguese
+nao falo ingles mano => I don't speak english
+vc fala espanhol? => do you speak spanish

@@ -1,0 +1,16 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+le seum de ouf | trop le seum | grave le seum | g trop le seum | j'ai trop le seum | jai trop le seum | le seum de fou = so gutted
+jvais au dodo | je vais au dodo | j'vais au dodo | jvais dodo | je file au dodo | jvais me pieuter | je vais me pieuter = I'm going to sleep
+me camp | me campe | me camp depuis | me campe depuis | il me camp | il me campe | me farm | me farme | il me farm = is camping me
+campeur | campeurs | campeur de merde | sale campeur | campeuse | kemper | kempeur = camper | shitty camper
+depuis 20 min | depuis vingt minutes | depuis des plombes | depuis des heures | depuis une plombe | depuis 1h | depuis des lustres = for ages | for 20 minutes
+a + | a+ | à + | à+ | a plus | à plus | a pluche | a tte | à tte | a toute | à toute | a tout à l'heure | a tal = see you | later
+les gens | la mif | la team | les kheys | les potos | la compagnie | les loulous = guys | everyone
+tanke le pack | tank le pack | tanke le groupe | tank le groupe | tanke les mobs | tank les mobs | tanke les adds | tank les adds = tank the pack
+a pull le boss | a pull le mob | a pull les mobs | a pull les adds | a pullé le boss | a pullé les mobs = pulled the boss | pulled the mobs
+on a wipé encore | encore wipe | encore un wipe | on a encore wipé | re wipe | rewipe | wipe de nouveau = wiped again
+sur le dernier boss | au dernier boss | sur le der | sur le dernier | sur le last | au last | au der = on the last boss
+## TEST
+g le seum de ouf, g eu que dalle sur le dernier boss, cheh => so gutted, I got nothing on the last boss
+bon bref, jvais au dodo, cimer pour la run, a + les gens => anyway, I'm going to sleep, thanks for the run, see you guys

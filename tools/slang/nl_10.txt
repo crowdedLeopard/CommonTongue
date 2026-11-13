@@ -1,0 +1,41 @@
+## DICT
+# ---- replay pass (2026-11-13): words real players used that the engine lacked ----
+praten | spreken | praat | spreek | spreekt | gepraat | gesproken = to speak | to talk
+aan = on | to
+dag | de dag | mooie dag | een mooie dag | fijne dag = day | the day | nice day
+prettige dag | prettige dag nog | fijne dag nog | nog een fijne dag | nog een prettige dag | goede dag | prettige dag aan jullie | fijne dag allemaal | prettige dag verder | fijne dag verder = have a nice day
+graag | heel graag | zeer graag | dolgraag = gladly
+ik eet graag = I like to eat
+ik drink graag = I like to drink
+ik speel graag = I like to play
+bedoel | bedoelt | bedoelen | bedoelde | bedoeld = mean | means
+ik bedoel | ik bedoel dus | k bedoel = I mean
+wat bedoel je | wat bedoel je daarmee | hoe bedoel je | wat bedoelt hij | wat bedoelt ze | wat bedoel jij = what do you mean
+gehoord | hoorde | heb gehoord = heard
+nooit van gehoord | nog nooit van gehoord | heb ik nooit van gehoord | nooit van gehoord hoor = never heard of it
+feestje | het feestje | feest | het feest | fuif = party
+waar is het feestje | waar is het feest | waar is de fuif = where is the party
+oprotten | opzouten | wegwezen | ophoepelen | opdonderen | optiefen = get lost
+hourra | hoera | hoeraa | hoezee = hurray
+gevloek | gescheld | gezeik = swearing
+wat een gevloek hier | wat een gescheld hier | wat een gezeik hier = what a lot of swearing here
+pindakaas | pindakaasje = peanut butter
+nederlandstalig | nederlandstalige | nederlandstaligen | nederlandstaliger | nederlandstaligers | hollands sprekend | nederlands sprekend = dutch speaking
+zijn er nederlandstaligen hier | zijn er nederlandstalige hier | zijn er nederlandstaliger hier | zijn er nederlanders hier | zijn er nog nederlanders | nederlanders hier = any dutch speakers here
+mateke | maatje | matekes | maatjes = mate
+hier | hierzo | hiero = here
+hollands praten | nederlands praten | hollands spreken | nederlands spreken = speak dutch
+frans praten | frans spreken = speak french
+duits praten | duits spreken = speak german
+engels praten | engels spreken = speak english
+stom hout | kut hout | stomme hout | dat kut hout = stupid wood
+## PATTERNS
+kan * ook niet vinden = can't find * either
+kan * niet vinden = can't find *
+ik kan * niet vinden = I can't find *
+wil je geen * praten = don't you want to speak *
+## TEST
+ik hoop dat je een mooie dag hebt => I hope that you have a nice day
+wat bedoel je => what do you mean
+Hollands praten! => speak dutch
+Kut hout heb ik nooit van gehoord => stupid wood

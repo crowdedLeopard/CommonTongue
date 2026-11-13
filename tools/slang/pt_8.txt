@@ -1,0 +1,25 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+do nada | de repente | de uma hora pra outra | sem mais nem menos = out of nowhere | suddenly
+de novo | denovo | outra vez | mais uma vez | novamente | dnv = again
+a raid toda | toda a raid | a raid inteira | o grupo todo | todo o grupo | a party toda | toda a party = the whole raid | the whole group
+por hoje deu | por hoje chega | por hoje é isso | por hoje e isso | deu por hoje | chega por hoje = that's it for today
+pra nd | pra nada | para nada | pra nenhuma coisa = for anything | for nothing
+reportei ele | reportei ela | reportei o cara | denunciei ele | denunciei ela | reportei = I reported him | I reported her | I reported
+puxa de um em um | puxa um de cada vez | puxa um por vez | um de cada vez | um por vez | de um em um = pull one at a time | one at a time
+cc no add | cc nos adds | controla o add | controla os adds | sheep no add | sap no add = cc on the add | cc on the adds
+bota o pet no passivo | pet no passivo | põe o pet no passivo | poe o pet no passivo | deixa o pet passivo = put the pet on passive
+abre ticket | abre um ticket | abre ticket aí | abre ticket ai | abre um ticket aí | manda ticket = open a ticket
+bugou tudo | bugou geral | tá tudo bugado | ta tudo bugado | bugou td = everything's bugged
+tá lagando pra krl | ta lagando pra krl | tá lagando pra caralho | lagando pra caralho | lagando demais | lag do caralho = lagging like hell
+dcou geral | caiu geral | todo mundo caiu | caiu todo mundo | geral caiu | geral dcou = everyone dc'd
+só pra mim | so pra mim | só comigo | so comigo | ou só eu | ou so eu = just me | only me
+pera aí q vou beber | pera ai q vou beber | pera que vou beber | vou beber água | vou beber agua | bebendo | tô bebendo | to bebendo = hang on I'm drinking | drinking
+n puxa ainda | não puxa ainda | nao puxa ainda | não puxa | nao puxa | n puxa | ainda não puxa | ainda nao puxa = don't pull yet | don't pull
+deixa de ser noob | para de ser noob | deixa de ser nub | para de ser nub | deixa de noobice = stop being a noob
+nabo do caralho | nabo do crl | nabo do krl | inútil do caralho | inutil do caralho = fucking useless
+tás a ver aquele gajo | tas a ver aquele gajo | tá vendo aquele cara | ta vendo aquele cara | viu aquele cara | tás a ver = you see that guy | you see
+ganda nabo | que nabo | nabo total | super nabo | baita nabo = total noob
+## TEST
+pqp quem puxou? morri de novo krl, espera o tank pfv => who pulled? I died again
+oxe, o boss resetou do nada, bugou tudo, abre ticket aí => the boss reset out of nowhere, everything's bugged, open a ticket

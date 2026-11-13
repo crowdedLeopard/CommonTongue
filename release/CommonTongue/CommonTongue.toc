@@ -1,0 +1,54 @@
+## Interface: 16001
+## Title: CommonTongue
+## Notes: Translates chat written in other languages into yours, inside the chat frame. Built-in engine for 18 languages, plus live machine translation with the companion. Type /tongue for options.
+## Author: Chris
+## Version: 2.0.0
+## SavedVariables: CommonTongueDB
+## Category: Chat
+## IconTexture: Interface\AddOns\CommonTongue\icon.tga
+
+UTF8.lua
+Text.lua
+English.lua
+Engine.lua
+Detect.lua
+Dict\en.lua
+Dict\es.lua
+Dict\pt.lua
+Dict\de.lua
+Dict\fr.lua
+Dict\it.lua
+Dict\ru.lua
+Dict\pl.lua
+Dict\nl.lua
+Dict\sv.lua
+Dict\no.lua
+Dict\da.lua
+Dict\fi.lua
+Dict\tr.lua
+Dict\uk.lua
+Dict\zh.lua
+Dict\ko.lua
+Dict\ja.lua
+Grammar\es.lua
+Grammar\pt.lua
+Grammar\de.lua
+Grammar\fr.lua
+Grammar\it.lua
+Grammar\ru.lua
+Grammar\pl.lua
+Grammar\nl.lua
+Grammar\sv.lua
+Grammar\no.lua
+Grammar\da.lua
+Grammar\fi.lua
+Grammar\tr.lua
+Grammar\uk.lua
+Grammar\zh.lua
+Grammar\ko.lua
+Grammar\ja.lua
+Memory.lua
+Learned.lua
+Bridge.lua
+Core.lua
+Options.lua

@@ -1,0 +1,33 @@
+## DICT
+# ---- nationalities and language names (2026-11-13) ----
+deutsch | deutsche | deutscher | deutsches | deutschen | dt = german
+engländer | engländerin | brite | briten | britisch = english | british
+englisch | englische | englischer | engl = english
+französisch | französische | franzose | franzosen | franz = french
+spanisch | spanische | spanier | spanierin = spanish
+italienisch | italienische | italiener | italienerin = italian
+portugiesisch | portugiesische | portugiese = portuguese
+polnisch | polnische | pole | polin = polish
+russisch | russische | russe | russen | russin = russian
+schwedisch | schwedische | schwede | schweden = swedish
+norwegisch | norwegische | norweger = norwegian
+dänisch | dänische | däne | dänen = danish
+finnisch | finnische | finne | finnen = finnish
+türkisch | türkische | türke | türken = turkish
+ukrainisch | ukrainische | ukrainer = ukrainian
+chinesisch | chinesische | chinesen = chinese
+koreanisch | koreanische | koreaner = korean
+japanisch | japanische | japaner = japanese
+holländisch | niederländisch | holländer | niederländer | käskopp = dutch
+österreicher | österreichisch | ösi | ösis = austrian
+schweizer | schweizerisch | schwiizer | eidgenosse = swiss
+ausländer | ausländerin | ausländisch = foreigner | foreign
+## PATTERNS
+sprichst du * | sprecht ihr * | spricht hier jemand * | spricht jemand * | spricht hier wer * | jemand hier der * spricht | jemand der * spricht | wer spricht * | kann hier jemand * | kann jemand * = does anyone speak *
+ich spreche kein * | spreche kein * | ich spreche nicht * | ich kann kein * | spreche nicht * | ich versteh kein * | ich verstehe kein * = I don't speak *
+ich spreche nur * | spreche nur * | ich kann nur * = I only speak *
+auf * bitte | bitte auf * = in * please
+## TEST
+spricht hier jemand deutsch? => does anyone speak german
+ich spreche kein englisch sorry => I don't speak english
+bitte auf englisch => in english please

@@ -1,0 +1,17 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+noen som snakker norsk | noen som snakker norsk her | er det noen som snakker norsk | noen norske her | noen nordmenn her | nn som snakker norsk | non som snakker norsk = does anyone speak norwegian
+noen som snakker engelsk | er det noen som snakker engelsk | nn som snakker engelsk = does anyone speak english
+skriv på norsk | skriv norsk | på norsk takk | på norsk plz | norsk takk = in norwegian please
+skriv på engelsk | skriv engelsk | på engelsk takk | på engelsk plz | engelsk takk = in english please
+jg kan ikke engelsk | jeg kan ikke engelsk | kan ikke engelsk | jeg snakker ikke engelsk | snakker ikke engelsk | eg kan ikkje engelsk = I don't speak english
+pulla for tidlig | pullet for tidlig | pulla for tidleg | dro for tidlig | pulla tidlig = pulled too early
+vi wipa igjen | vi wipet igjen | wipa igjen | wipet igjen | vi døde igjen | døde igjen = we wiped again
+tanken er oom | tank er oom | tanken er tom for mana | tanken har ikke mana | healeren er oom | healer er oom = the tank is oom | the healer is oom
+ganker meg | ganker meg hele tida | ganker meg hele tiden | han ganker meg | camper meg | han camper meg = is ganking me | is camping me
+hele tida | hele tiden | heile tida | heile tiden = all the time
+jævla lowbie-camper | jævla lowbie camper | lowbie-camper | lowbie camper | jævla camper = fucking lowbie camper | camper
+ninja'et looten | ninjet looten | ninja'a looten | ninjet loot | tok looten | ninja'et loot = ninja'd the loot
+non som ska til | noen som skal til | nn som ska til | noen som ska til | noen som går til | noen som skal | er det noen som skal til = anyone going to
+## TEST
+noen som snakker norsk her? => does anyone speak norwegian

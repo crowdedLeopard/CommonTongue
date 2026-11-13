@@ -1,0 +1,40 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+geklappt | hat geklappt | hats geklappt | hat's geklappt | hat funktioniert | hat gefunzt | gefunzt | klappt = worked | it worked | works
+hat nicht geklappt | hat nich geklappt | hat net geklappt | klappt nicht | klappt nich | klappt net | funzt nicht | funzt nich | funzt net | geht nicht | geht nich | geht net = didn't work | doesn't work
+deinstallier | deinstallieren | deinstallier dich | deinstallier das spiel | deinstall | uninstall dich = uninstall
+lern spielen oder deinstallier | lern spielen oder deinstallier dich | l2p oder deinstallier = learn to play or uninstall
+mia san durch | mia san fertig | wir sind durch | wir sind fertig | wir sind fertig damit | sind durch | sind fertig | samma durch = we're done
+mana leer | mana ist leer | mana is leer | kein mana | kein mana mehr | hab kein mana | hab kein mana mehr | bin oom | oom | bin leer = out of mana | oom
+haste ka | hast du ka | haste ne ahnung | hast du ne ahnung | haste eine ahnung | weißt du | weisst du | weißte | weisste | wisst ihr | weiß jemand | weiss jemand | weiß wer | weiss wer = any idea | do you know | does anyone know
+glei | gleich | sofort | direkt | auf anhieb = right away | immediately | first time
+beim ersten versuch | beim ersten try | auf anhieb geklappt | beim ersten mal = on the first try
+ur | voll | richtig | mega | extrem | übelst | uebelst | brutal | hammer | krass | derbe = really | very
+leiwand | ur leiwand | voll leiwand | geil | ur geil | voll geil | mega geil | hammer geil | sau geil | saugeil | der hammer | bombe | nice = awesome | great
+voll lost | komplett lost | total lost | so lost | bin lost | bin voll lost | bin komplett lost = totally lost | clueless
+mir | mia = me
+es bitzeli | es bitzli | bitzeli | bitzli | a bissl | a bisserl | bissl | bisschen | ein bisschen | n bisschen | bissi = a bit | a little
+chasch | chasch mir | kannst du mir | kannste mir | könntest du mir | kannst mir = can you | could you
+geben | gebe | gib | gibst | gebt | gibt mir | gib mir | gib ma | gibste = give | give me
+bin blank | bin pleite | bin arm | hab nix | hab kein gold | kein gold | bin broke | hab keine kohle | keine kohle = broke | no gold
+wat is dat | was is das | was ist das | was isn das | wat isn dat | was soll das | was soll dat = what is that | what's that
+wucherpreis | wucher | abzocke | abzocker | abzock | viel zu teuer | überteuert | ueberteuert | mondpreis | mondpreise = rip-off | way too expensive
+geh bitte | gehts noch | geht's noch | spinnst du | spinnst | hallo gehts noch | bist du irre = come on | seriously
+kurz klo | bin kurz klo | muss kurz klo | kurz aufs klo | kurz pinkeln | kurz wc | bin kurz wc | muss mal | muss kurz = bathroom break | brb toilet
+gemma | gemma weiter | gehn wir weiter | gehts weiter | geht's weiter | weiter gehts | weiter geht's | machen wir weiter | machma weiter | auf gehts | auf geht's | los gehts | los geht's = let's go | let's continue
+wartet ma | wartet mal | wart ma | wart mal | warte ma | warte mal | wartet kurz | warte kurz | moment | momentchen | sekunde | sek = wait | wait a moment
+hab den add gepullt | hab n add gepullt | add gepullt | hab gepullt | hab aus versehen gepullt | hab ausversehen gepullt | sorry gepullt = I pulled the add | I pulled
+war voll verpeilt | war verpeilt | war unaufmerksam | hab nich aufgepasst | hab nicht aufgepasst | war afk = I wasn't paying attention
+paar kröten | paar kröten zahlen | zahl auch | zahl auch was | zahl auch paar kröten | zahle auch | gebe tg | geb tg | tg | trinkgeld = I'll pay | I'll tip | tip
+kröten | kohle | moneten | mäuse | maeuse | knete | zaster | schotter | kies = money | gold
+seit stunden | seit ewigkeiten | schon ewig | seit ner stunde | seit ner ewigkeit | schon seit stunden = for hours | for ages
+der ganker | ganker | ein ganker | die ganker = ganker | the ganker | gankers
+campt | campt den | campt die | campt das | wird gecampt | gecampt = is camping | camping | is being camped
+jo eh klar | eh klar | eh kloar | klar | na klar | ja klar | logo | logisch | sicher | aber sicher | na sicher = of course | sure
+gn8 zusammen | gn8 an alle | gn8 leute | gute nacht zusammen | gute nacht an alle | gute nacht leute | nacht zusammen | nachti | gn8 = good night everyone | good night
+bin dann mal pennen | geh pennen | geh schlafen | bin pennen | hau mich hin | geh ins bett | ab ins bett | muss ins bett | bin dann mal weg | bin weg | bin dann mal off = I'm off to bed | I'm off
+mach et jut | macht et jut | machts gut | machts jut | mach's gut | machs gut | macht's gut | mach et gut = take care
+## TEST
+oida des is ur leiwand, hat glei beim ersten versuch geklappt => that is really awesome, worked on the first try
+chasch mir es bitzeli gold geben? bin blank => can you give me a bit gold? broke
+hdf du kacknoob, lern spielen oder deinstallier => learn to play or uninstall

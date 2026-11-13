@@ -1,0 +1,134 @@
+-- CommonTongue / Dict/fr.lua  —  French
+local B = CommonTongue
+local L = B:RegisterLanguage("fr", "French", {
+  native = "Français",
+  hints = { "œ", "êt", "êm", "ès", "èr", "èt", "èm", "èc", "èv", "çon", "çai", "çoi", "çu", "où", "û", "î", "ôt",
+            "c'est", "j'", "qu'", "t'es", "t'as", "s'il", "y'a" },
+  suffixes = { "s", "es", "x" },
+  stopwords = [==[
+    les des une et je j'ai nous vous ils elles moi toi mon notre votre cette ces
+    ça c'est est sont suis êtes avons avez ont avoir être faire fait fais peux peut veux veut
+    vais faut au aux dans avec sans pour chez vers sous pas quoi quand pourquoi combien
+    très moins trop aussi encore déjà toujours jamais ici maintenant puis après avant alors
+    donc comme oui ouais ouep nan bonjour bonsoir salut coucou merci désolé
+    quelqu'un quelque rien tout tous toute toutes beaucoup peu trouve trouver
+    cherche recherche besoin aide vends achète groupe guilde quête donjon niveau soigneur
+    slt bjr bsr stp svp mdr ptdr tkt jsp qqn qqch pk pq bcp dsl dacc tjs tjrs mtn ajd tlm
+    pcq jpp osef wesh bah ben bref voilà y'a ya t'es t'as j'suis chui dispo
+  ]==],
+})
+
+L:Add([==[
+# ---- greetings & politeness ----
+bonjour | bjr | salut | slt | coucou | cc | wesh | kikou = hello | hi | hey
+bonjour à tous | bonjour a tous | salut à tous | salut a tous | salut tout le monde | bonjour tout le monde | cc tout le monde | slt tlm = hello everyone | hello there
+re | rebonjour | resalut = hi again | back again
+bonsoir | bsr = good evening
+bonne nuit | bonne nuit à tous | bonne nuit a tous | bn = good night
+bonne journée | bonne journée à tous = have a good day
+bonne soirée | bonne soirée à tous = have a good evening
+au revoir | tchao | tchuss | bye bye | adieu = bye | goodbye
+à plus | a plus | à plus tard | a plus tard | à toute | a toute | à tout à l'heure | a tout a l'heure = see you later | see you | cya
+à bientôt | a bientot = see you soon
+à demain | a demain = see you tomorrow
+à la prochaine | a la prochaine = until next time
+merci | mrc | mci | merci beaucoup | merci bcp | merci bien | mercii | merki = thanks | thank you | thx | ty | tyvm
+merci à tous | merci a tous | merci tout le monde | merci à vous | merci a vous = thanks everyone
+merci pour l'aide | merci pour le coup de main | merci du coup de main | merci de l'aide = thanks for the help
+de rien | pas de problème | pas de souci | pas de soucis | avec plaisir | pas de quoi | y a pas de quoi | je t'en prie = you're welcome | no problem | np
+s'il te plaît | s'il vous plaît | stp | svp | steuplait | sil te plait | sil vous plait | siouplait = please | pls | plz
+désolé | désolée | dsl | pardon | navré | je m'excuse | toutes mes excuses | dsl tlm = sorry
+vraiment désolé | vraiment dsl | trop dsl | désolé vraiment | je suis vraiment désolé = I'm so sorry
+excuse moi | excusez moi | excuse | scuse = excuse me
+oui | ouais | ouep | ouaip | oué | ui | wé | ouai = yes | yeah
+d'accord | d'acc | dacc | dac | ça marche | ca marche | ça roule | oki = ok | okay | alright
+bien sûr | évidemment | carrément | bien entendu | bien sûr que oui | bah oui | ben oui = of course | sure
+non | nan | nn | nop | naan = no
+non merci = no thanks
+si = if
+bon | bonne | bons | bonnes = good
+bien = well | fine | good
+génial | super | trop bien | stylé | au top | énorme | mortel | trop cool = great | awesome | cool | super
+parfait | nickel | impeccable | impec | niquel | nikel = perfect
+excellent | excellente = excellent
+sympa | chouette | cool | sympas = nice | cool
+pas mal = not bad
+mdr | ptdr | xptdr | mdrr | hihi | héhé | pff mdr | lool = lol | haha
+jpp | j'en peux plus = I can't anymore
+bonne chance | bon courage | bonne chance à tous | bonne chance a tous | courage = good luck | gl
+bien joué | bien jouer | bj | bien joué à tous | bien joué a tous | joli coup = well played | good game | wp | gg
+amuse toi bien | amusez vous bien | bon jeu | amuse toi | amusez vous | éclate toi = have fun | hf
+bon boulot | beau boulot | bon travail | beau travail | bien ouej | bien fait = good job | well done
+bravo | félicitations | félicitation | féloche | félicitations à tous = congratulations | grats
+joyeux anniversaire | bon anniversaire | bon anniv | joyeux anniv = happy birthday
+heureux | heureuse | content | contente = happy
+tranquille | tranquil | trkl | oklm | pas de stress | zen = relax | no worries
+tkt | t'inquiète | t'inquiète pas | t'inquiètes | ne t'inquiète pas | t'en fais pas | pas de panique | tqt = don't worry
+peu importe | ça fait rien | c'est pas grave | pas grave | c pas grave | tant pis | ça ne fait rien = doesn't matter | never mind
+je m'en fous | je m'en fiche | m'en fous | osef | balec | on s'en fout | on s'en fiche = I don't care | whatever
+laisse tomber | laisse béton | oublie | oublie ça = forget it
+t'as raison | tu as raison | vous avez raison = you're right
+mon dieu | oh mon dieu | la vache | oh la la | oh là là | omd = oh my god | omg
+putain | ptn | merde | bordel | fait chier | fais chier | purée | punaise = damn | shit
+putain de merde | bordel de merde = holy shit
+zut | mince | flûte | oups | oupsi = oops
+waouh | ouah | wouah | whaou | wouaw = wow
+hé | eh | hep | ohé | hey toi = hey
+mec | gars | frérot | poto | mon gars | ma gueule | mon pote | l'ami = dude | mate | bro
+frère | frr | fréro | reuf | mon frère = bro | brother
+sœur | soeur = sister
+les gars | les mecs | les amis | les potes | les copains | la team | les loulous = guys
+ami | amie | pote | copain | copine = friend
+amis | amies | potes | copains = friends
+tout le monde | tlm | tt le monde = everyone | everybody
+dommage | c'est dommage | quel dommage | c dommage | la poisse | pas de bol | pas de chance = too bad | what a shame
+tant mieux | c'est cool | c cool = great | nice
+ça craint | c'est nul | c nul | c'est naze | la lose | c'est pourri = that sucks
+bizarre | chelou | étrange | c'est bizarre | zarb | zarbi | c chelou = weird | how strange
+la chance | quelle chance | chanceux | le bol | veinard | quel bol = lucky
+sérieux | sérieusement | srx | vraiment | vrmt | pour de vrai | sans déc = really | seriously
+vrai | c'est vrai | c vrai | exact = true | right
+faux | c'est faux | c faux = false | wrong
+exactement | tout à fait | tout a fait | c'est ça | c ça | voilà c'est ça = exactly
+voilà | et voilà | voili voilou = there you go | that's it
+forcément | logique | c'est logique = obviously
+sûr | sûre | certain | certaine = sure | certain
+j'abandonne | je laisse tomber | je lâche l'affaire = I give up
+on abandonne | on laisse tomber | on lâche l'affaire = we give up
+attention | gaffe | fais gaffe | faites gaffe | fais attention | faites attention | attention à | attention a = careful | watch out
+au secours | à l'aide | a l'aide | sos = help
+malheureusement | hélas = unfortunately
+heureusement = fortunately | luckily
+enfin = finally | at last
+bref = anyway
+du coup | donc du coup = so
+en fait | enfaite | en faite | enft = actually
+au fait = by the way | btw
+bah | ben | bé | beh | bein | bon ben = well
+euh | heu | hum | heuu = uh
+ah ok | ah d'accord | ah oki | ah dacc = oh ok
+c'est parti | c parti | en avant | on y va | on y go | c'est tipar | allez go | allons y = let's go | here we go
+vas y | allez y | go y | fonce | foncez = go ahead
+ça va | ca va | sa va | cv | comment ça va | comment ca va | la forme | tu vas bien = how's it going | how are you | what's up
+quoi de neuf | quoi de 9 | ça dit quoi | ca dit quoi | bien ou bien = what's new
+ça va bien | ca va bien | je vais bien | ça va super | ça va nickel = I'm fine | I'm good
+et toi | et vous = and you
+ta gueule | tg | ferme la | la ferme | tais toi | taisez vous = shut up
+dégage | casse toi | barre toi | va t'en | du balai = get lost | go away
+connard | enculé | fdp | bâtard | salaud | tocard | trou du cul | salope = asshole | bastard
+con | conne | débile | abruti | idiot | crétin | teubé | imbécile = idiot | stupid
+nul | nulle | naze | nuls | pourri | bidon | à chier = lame | bad
+boulet | kikoo | kévin | noob | nub | nioub = noob | newbie
+je rigole | je déconne | je blague | pour rire | jdc | je plaisante = just kidding | jk
+blague | vanne = joke
+pas trop = not really
+pas du tout | du tout | absolument pas = not at all
+pas encore = not yet
+pas besoin | plus besoin | pas la peine | c'est bon merci = no need
+compris | pigé | capté | bien reçu | bien compris | j'ai compris = got it | understood
+je comprends pas | je capte pas | j'ai pas compris | pas compris | je pige pas | jcomprends pas = I don't understand
+c'est bon | c bon | cest bon | c'est ok | c ok = it's fine | it's ok
+c'est bien | c bien = that's good
+ça dépend | ca dépend | ça dépend de = it depends
+comme tu veux | comme vous voulez | comme tu le sens | à toi de voir = as you wish | up to you
+moi aussi | moi pareil | pareil pour moi | pareil = me too | same

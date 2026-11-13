@@ -1,0 +1,17 @@
+## DICT
+# ---- gaps from the slang test lines (2026-11-13) ----
+kiere | kieres | kieren | kiero | kieres venir | kiere venir = wants | you want | they want | I want | want to come | wants to come
+alguien kiere venir | alguien quiere venir | alguien se apunta | alguien se anima | alguien viene | quien viene | quién viene = anyone want to come | anyone coming
+cuarto | el cuarto | la sala | sala | la habitación | habitacion = room | the room
+todo el cuarto | toda la sala | todo el pasillo | toda la habitación | toda la habitacion = the whole room
+pulleó | pulleo | pulló | pullo | pulleó todo | pulló todo | pulleo todo = pulled | pulled everything
+wipeamos | wipeamos todos | wipe total | nos wipeamos | hubo wipe = we wiped
+me ninjeo | me ninjeó | me ninjearon | se ninjeo | se ninjeó | ninjeó | ninjeo = ninja'd | ninja looted
+me ninjeo el loot | me ninjeó el loot | se ninjeo el loot | se ninjeó el loot | ninjeó el loot | ninjeo el loot = ninja'd the loot
+dale que | dale k | dale po que | vamos que | vamo que = come on
+ta ahi | ta ahí | esta ahi | está ahí | esta ahí | ta alli | ta allí = is there
+vamos a por el | vamos a por él | a por el | a por él | vamos a por ella | a por ellos | vamos a por ellos = let's get him | let's get them
+raza | la raza | banda | la banda | peña | la peña | gente | la gente | chavales | los chavales | los pibes = guys | people
+arenas | las arenas | arena | la arena = arenas | arena
+## TEST
+no mames wey, el pala pulleó todo el cuarto y wipeamos => no way, the paladin pulled the whole room and we wiped

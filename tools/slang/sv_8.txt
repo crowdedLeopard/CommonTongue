@@ -1,0 +1,7 @@
+## DICT
+# ---- replay pass (2026-11-13) ----
+svensk guild | svenskt guild | svenskt gille | svenskguild | svenneguild | svensk gille | svensk klan = swedish guild
+svenskar här | svenskar har = swedes here
+söker svensk guild | letar svensk guild | letar efter svensk guild | söker svenskt gille = looking for a swedish guild
+## TEST
+lf svensk guild => swedish guild

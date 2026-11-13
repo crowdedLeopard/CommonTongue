@@ -1,0 +1,15 @@
+## DICT
+# ---- phrases from the slang test lines (2026-11-13) ----
+kim pulladı | kim pull attı | kim pull etti | kim çekti | kim pulladi | pulladı kim | pullayan kim = who pulled
+kim pulladı lan | kim pulladı amk | kim çekti lan = who the hell pulled
+borç verir misin | borç ver | borç verirmisin | ödünç verir misin | borç alabilir miyim | borç lazım = can you lend me
+yattım | yattim | ben yattım | yatıyorum | yatıyom | uyuyorum | uyumaya gidiyorum | ben kaçtım yattım = I'm going to bed | going to bed
+öldüm | oldum | öldüm ya | öldüm amk | geberdim | gebertildim | öldürdü beni = I died | I'm dead
+lvl oldum | level oldum | seviye oldum | lvl attım | level attım | seviye atladım | ding oldum = dinged | I leveled up
+beni campliyor | beni kampliyor | beni campliyo | beni kamplıyor | camplıyor beni | kampliyor beni = is camping me
+beni gankliyor | beni gankliyo | gankliyor beni | beni öldürüp duruyor = is ganking me
+healcı var mı | healer var mı | heal var mı | healcı lazım | heal lazım | healer lazım = any healer | need healer
+tank var mı | tankçı var mı | tank lazım | tankçı lazım = any tank | need tank
+türkçe konuşan var mı | türk var mı | türk var mı burda | türkçe bilen var mı | türk oyuncu var mı = any turks here | does anyone speak turkish
+## TEST
+amk kim pulladı lan wipe olduk => who the hell pulled we wiped

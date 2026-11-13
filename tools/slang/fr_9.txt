@@ -1,0 +1,35 @@
+## DICT
+# ---- nationalities and language names (2026-11-13) ----
+allemand | allemande | allemands | allemandes = german
+anglais | anglaise | anglaises | angl | rosbif | rosbifs = english
+français | francais | française | francaise | françaises | frenchie | frenchies = french
+espagnol | espagnole | espagnols = spanish
+italien | italienne | italiens = italian
+portugais | portugaise = portuguese
+polonais | polonaise = polish
+russe | russes = russian
+suédois | suedois | suédoise = swedish
+norvégien | norvegien | norvégienne = norwegian
+danois | danoise = danish
+finlandais | finnois | finlandaise = finnish
+turc | turque | turcs = turkish
+ukrainien | ukrainienne = ukrainian
+chinois | chinoise = chinese
+coréen | coreen | coréenne = korean
+japonais | japonaise = japanese
+néerlandais | neerlandais | hollandais | hollandaise | batave = dutch
+belge | belges = belgian
+suisse | suisses = swiss
+québécois | quebecois | québecois | québécoise = quebecois
+étranger | etranger | étrangère | etrangere | étrangers = foreigner | foreign
+## PATTERNS
+quelqu'un parle * | quelqun parle * | qqn parle * | y a quelqu'un qui parle * | ya quelqu'un qui parle * | il y a quelqu'un qui parle * | qui parle * | quelqu'un qui parle * = does anyone speak *
+tu parles * | vous parlez * | tu parle * | parles tu * | parlez vous * | parles-tu * | parlez-vous * = do you speak *
+des * ici | y a des * ici | ya des * ici | il y a des * ici | des * là | des * dans le coin = any * here
+je parle pas * | je ne parle pas * | jparle pas * | parle pas * | je parle pas du tout * | je ne parle pas du tout * = I don't speak *
+je parle que * | je ne parle que * | jparle que * | je parle seulement * | je parle juste * | je parle uniquement * = I only speak *
+en * stp | en * svp | en * s'il te plait | en * s'il vous plait | en * s'il te plaît | en * s'il vous plaît = in * please
+## TEST
+des français ici ? => any french here
+je parle pas anglais dsl => I don't speak english
+quelqu'un parle espagnol ? => does anyone speak spanish

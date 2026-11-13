@@ -1,0 +1,4 @@
+## PATTERNS
+# ---- patterns lost in the first merge (right side had two frames) ----
+wbij na * | wbijaj na * | wbijcie na * | wchodź na * | wchodz na * | wskakuj na * | wskakujcie na * = get on *
+wbij do * | wbijaj do * | wbijcie do * | wskakuj do * | wskakujcie do * = get into *

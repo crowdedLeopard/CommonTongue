@@ -1,0 +1,21 @@
+# build output
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# editors and OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# never commit a personal translation memory or companion state
+CommonTongue/Learned.lua.bak
+memory.json
+companion.log

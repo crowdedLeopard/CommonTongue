@@ -1,0 +1,37 @@
+## DICT
+# ---- nationalities and language names (2026-11-13) ----
+alemán | aleman | alemana | alemanes | alemanas = german
+inglés | ingles | inglesa | ingleses | inglesas = english
+francés | frances | francesa | franceses = french
+español | espanol | española | espanola | españoles | castellano = spanish
+italiano | italiana | italianos = italian
+portugués | portugues | portuguesa = portuguese
+polaco | polaca | polacos = polish
+ruso | rusa | rusos = russian
+sueco | sueca | suecos = swedish
+noruego | noruega | noruegos = norwegian
+danés | danes | danesa = danish
+finlandés | finlandes | finés = finnish
+turco | turca | turcos = turkish
+ucraniano | ucraniana = ukrainian
+chino | chinos | chinas = chinese
+coreano | coreana = korean
+japonés | japones | japonesa = japanese
+holandés | holandes | neerlandés | holandesa = dutch
+latino | latina | latinos | latinas | latam = latin american
+mexicano | mexicana | mexicanos | mexa = mexican
+argentino | argentina | argentinos | argento | argentos = argentinian
+chileno | chilena | chilenos = chilean
+colombiano | colombiana = colombian
+peruano | peruana = peruvian
+extranjero | extranjera | extranjeros | guiri | guiris | gringo | gringos | gringa = foreigner | foreign
+## PATTERNS
+alguien habla * | alguien que hable * | alguien aquí habla * | alguien aqui habla * | hay alguien que hable * | quién habla * | quien habla * | alguien hablando * = does anyone speak *
+hablas * | hablás * | habláis * | hablais * | tu hablas * | tú hablas * | ustedes hablan * = do you speak *
+no hablo * | no hablo nada de * | yo no hablo * | no hablamos * | no hablo mucho * = I don't speak *
+solo hablo * | sólo hablo * | hablo solo * | yo solo hablo * | hablo sólo * = I only speak *
+en * por favor | en * porfa | en * porfis | en * plis = in * please
+## TEST
+alguien habla español aquí? => does anyone speak spanish
+no hablo ingles sorry => I don't speak english
+hablas aleman? => do you speak german

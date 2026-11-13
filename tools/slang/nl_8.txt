@@ -1,0 +1,9 @@
+## PATTERNS
+# ---- patterns lost in the first merge (right side had two frames) ----
+ff * | effe * | efkes * | ekes * | even * | eventjes * = just *
+ff * doen | even * doen | effe * doen = just do *
+geen * nodig | geen * meer nodig = no * needed
+geen * meer | geen * hoor | geen * man | geen * joh | geen * zeg = no *
+kut * | kut * zeg | kut * joh | kut * man | klote * | klote * zeg | tering * | tyfus * | kanker * = fucking *
+stomme * | domme * | stomme * zeg | stomme * joh | stomme * man = stupid *
+kansloze * | hopeloze * | kutte * = hopeless *
