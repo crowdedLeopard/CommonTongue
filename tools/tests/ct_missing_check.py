@@ -2,11 +2,21 @@
 # dictionaries: which of the words players actually used are still unknown?
 #
 #   python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_missing_check.py [SavedVariables\CommonTongue.lua]
-import io, os, sys
+import glob, io, os, sys
 sys.stdout.reconfigure(encoding="utf-8")
 
-DEFAULT_SV = r"C:\Program Files (x86)\World of Warcraft\_forever_\WTF\Account\CHRISMATHIAS\SavedVariables\CommonTongue.lua"
-path = sys.argv[3] if len(sys.argv) > 3 else DEFAULT_SV
+WTF_ACCOUNTS = r"C:\Program Files (x86)\World of Warcraft\_forever_\WTF\Account"
+
+
+def default_saved_variables():
+    """The newest CommonTongue.lua under any account folder of the Forever client, or None."""
+    found = glob.glob(os.path.join(WTF_ACCOUNTS, "*", "SavedVariables", "CommonTongue.lua"))
+    return max(found, key=os.path.getmtime) if found else None
+
+
+path = sys.argv[3] if len(sys.argv) > 3 else default_saved_variables()
+if not path or not os.path.isfile(path):
+    sys.exit("no SavedVariables file found: pass the path to WTF\\Account\\<account>\\SavedVariables\\CommonTongue.lua")
 
 L.execute(io.open(path, encoding="utf-8").read())
 db = G.CommonTongueDB
