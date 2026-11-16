@@ -3,6 +3,63 @@
 All notable changes to CommonTongue. The format follows Keep a Changelog;
 versions follow the `## Version` line of the TOC.
 
+## 3.0.0 - 2026-11-16
+
+Built-in translation that copes with the way people really type in chat.
+
+### Added
+- A fuzzy layer (`Fuzzy.lua`) that runs once a line's language is known and
+  resolves the words no lookup knows: missing apostrophes (`cest`, `jregarde`,
+  `daccord`), per-language respelling rules (`koi`, `kestion`, `aki`, `fuer`,
+  `naum`, `perke`), typos (a letter dropped, doubled, swapped or next to the
+  right key: `tyrouve`, `paser`, `serveru`, `minde`, `cherhce`) and compounds
+  in the Germanic languages (`heilergruppe` = healer group, `groepsleider` =
+  group leader). Corrections are made in place before templates and phrases
+  run, so `je cherhce un groupe` still meets the "I'm looking for a group"
+  template. Detection never uses the layer: English and neutral lines stay
+  untouched.
+- English words inside a foreign line (`outlook est down`, `fake news`,
+  `need 1 tank pour ...`) are passed through and no longer count as unknown,
+  so such lines are shown and `/tongue missing` lists real gaps only.
+- Phrases typed with stretched letters (`au revoiiiir`) are recognised.
+- `L:Respell` blocks for French, Spanish, Portuguese, Italian, German, Dutch,
+  Swedish, Danish, Norwegian and Finnish, documented in the grammar guide.
+- A fuzzy corpus (`tools/tests/ct_fuzzy_cases.txt`: 144 chat spellings from
+  the real chat log, player names removed, 30 of them English lines that must
+  stay untouched) and `tools/tests/ct_fuzzy_check.py`, which prints the hit
+  rate per category: 97%.
+- French: the basic function words (`le la de du un une en y qui que par ma
+  ...`) are stopwords, so French lines with few content words are no longer
+  read as Spanish or Italian; about 200 entries from the real chat log (SMS
+  forms such as `chai pas`, `vla`, `cava`, `kestufé`, `tes où`; the `a`/`à`
+  homograph before determiners and pronouns; `terre`, `poisson`, `hauteur`,
+  `réussi`, `plutôt`, `carrière`, `question` and other gaps; the client's
+  "Emplacement marqué sur la carte" map pin line) and twelve verbs (`sentir`,
+  `mener`, `réussir`, `détester`, `découvrir` ...). German and Spanish
+  entries for the shared map pin line (the localised strings could not be
+  verified against those clients). Swedish `tyvärr`.
+
+### Fixed
+- The client's shared map pin line (`|A:Waypoint-MapPin-ChatIcon...|a
+  Emplacement marqué sur la carte`) was read as Spanish ("sur" = south) and
+  hidden as shaky. The atlas markup itself was already stripped.
+- Stretched letters no longer count as characteristic letter pairs
+  (`Saluuuuut` is French, not four Dutch `uu`).
+- Conjugation rules are indexed by their last letter, so a word is only tried
+  against the rules that can match it: 0.78 → 0.59 ms per line even with the
+  fuzzy pass.
+
+### Quality
+- Replaying the real chat log (911 distinct lines, same script with Core's
+  decision): 193 → 208 lines translated, 24 → 11 hidden, 9 → 8 without a
+  language, every one of the 614 English lines unchanged; all 11 lines still
+  hidden are junk.
+  "Yéti, y es-tu ?", "vive la raclette", "La réserve volée de ...", "Oula le
+  dérapage" and the map pin line are French now; "le pupu" is hidden.
+- Load 0.75 s, 36.5 MB of Lua memory, 0.59 ms per new chat line, nothing per
+  frame. 116 unit tests, `misdetected: 0`, parity `0 mismatches`, bridge
+  `ALL PASSED`.
+
 ## 2.0.0 - 2026-11-13
 
 First public release for World of Warcraft: Forever (interface 16001).

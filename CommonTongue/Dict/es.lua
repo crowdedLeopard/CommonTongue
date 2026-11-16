@@ -1655,6 +1655,8 @@ ta ahi | ta ahí | esta ahi | está ahí | esta ahí | ta alli | ta allí = is t
 vamos a por el | vamos a por él | vamos a por ella | vamos a por ellos = let's get him | let's get them
 la raza | la banda | la gente | los chavales | los pibes = guys | people
 las arenas | la arena = arenas | arena
+# ---- v3 (2026-11-16): the client's shared map pin line (localised string not verified against an esES client) ----
+ubicación de marcador de mapa | ubicación del marcador del mapa | ubicación de la marca de mapa | ubicación marcada en el mapa | marcador de mapa | marcador del mapa = map pin location
 ]==])
 
 L:Reverse([==[

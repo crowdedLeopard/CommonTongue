@@ -178,6 +178,19 @@ skipper | skiper = skip
 spammer = spam
 focuser = focus
 dispeller = dispel
+# v3 (2026-11-16): verbs the real chat log used
+sentir = smell
+ressentir = feel
+mener = lead
+réussir | reussir = succeed
+détester | detester = hate
+découvrir | decouvrir = discover
+regretter = regret
+kiffer = love
+galérer | galerer = struggle
+ressusciter | ressuciter | rez = resurrect
+voler = steal
+crier = shout
 ]==])
 
 -- suffix > infinitive ending = English template
@@ -518,4 +531,31 @@ le * là | la * là | le * la | la * la | les * là | les * la = that *
 * c'est mort | * c mort | * cest mort = * no way
 * de base | * à la base | * a la base = * originally
 * vite fait | * vite fais | * viteuf | * rapidos | * rapido | * en vitesse | * en speed = * quickly
+]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua). Each rule turns a word
+-- no lookup knows (lower case, accents folded away) into one candidate that
+-- is looked up like any other word; the first candidate the dictionary knows
+-- wins. They only run once the line is known to be French.
+L:Respell([==[
+# SMS consonants: koi, ki, kel, kan, kestion
+k > qu
+k > c
+# a sound written as heard: moa, toa, kroa
+oa > oi
+# a silent final letter left out: mieu, tro, bocou, chapo
+$ > x
+$ > s
+$ > t
+$ > p
+$ > e
+$ > d
+$ > r
+# a silent h left out: abitude, eure, aricot
+^ > h
+# -eau written as -o: bato, chato, nivo
+o$ > eau
+# ph and f
+f > ph
+ph > f
 ]==])

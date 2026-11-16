@@ -2045,6 +2045,8 @@ på svenska | pa svenska | på engelska | pa engelska | på ren svenska | pa ren
 svensk guild | svenskt guild | svenskt gille | svenskguild | svenneguild | svensk gille | svensk klan = swedish guild
 svenskar här | svenskar har = swedes here
 söker svensk guild | letar svensk guild | letar efter svensk guild | söker svenskt gille = looking for a swedish guild
+# ---- v3 (2026-11-16) ----
+tyvärr | tyvarr | tyvär = unfortunately
 ]==])
 
 L:Reverse([==[

@@ -9,8 +9,12 @@
 --   2. phrase table        idioms and multi-word expressions
 --   3. word lookup         exact, accent-folded, suffix-stripped, elided
 --                          ("l'entrée"), conjugated (any form of a known verb)
---                          and de-emphasised ("holaaaa")
---   4. reordering          noun + adjective -> adjective + noun where needed
+--                          and de-emphasised ("holaaaa"); an English word
+--                          inside a foreign line is passed through
+--   4. fuzzy lookup        once the language is known, a word still unknown
+--                          is tried as a glued contraction, an SMS spelling,
+--                          a typo or a compound (Fuzzy.lua)
+--   5. reordering          noun + adjective -> adjective + noun where needed
 --
 -- (Whole sentences already seen are answered before any of this, from the
 -- translation memory in Memory.lua.)
@@ -19,7 +23,7 @@ local B = CommonTongue
 local U = B.UTF8
 local T = B.Text
 local EN = B.English
-local tinsert, tconcat, sub = table.insert, table.concat, string.sub
+local tinsert, tconcat, sub, byte = table.insert, table.concat, string.sub, string.byte
 
 B.Languages = {}        -- code -> language object
 B.LanguageOrder = {}    -- codes in registration order
@@ -114,7 +118,9 @@ function B:RegisterLanguage(code, name, opts)
     suffixes = opts.suffixes or {},
     verbs = {},             -- infinitive -> English base verb
     verbFold = {},
-    conj = {},              -- conjugation rules
+    conj = {},              -- conjugation rules, longest suffix first
+    conjLast = {},          -- last byte of a suffix -> the rules ending in it
+    conjLastF = {},         -- the same for the accent-folded suffixes
     patterns = { idx = {}, slotIdx = {}, count = 0 },
     enPatterns = { idx = {}, slotIdx = {}, count = 0 },
     spPatterns = {},        -- templates for languages written without spaces
@@ -162,11 +168,14 @@ end
 -- May a typed key that only matches after accent folding stand for the real
 -- key? Not when a typed English stopword would become a different word:
 -- "for" is not "för", "for a" is not "for å".
-local function foldAllowed(typed, real)
+local function foldAllowed(typed, real, relax)
   if typed == real then return true end
   local en = B.Languages.en
   if not en then return true end
   if not typed:find(" ", 1, true) then return not en.stopwords[typed] end
+  -- once the language is known (the fuzzy pass) a phrase typed without its
+  -- accents is that phrase: "a ton avis" is "à ton avis"
+  if relax then return true end
   local realWords, i = {}, 0
   for w in real:gmatch("[^ ]+") do realWords[#realWords + 1] = w end
   for w in typed:gmatch("[^ ]+") do
@@ -312,6 +321,15 @@ function Lang:Conjugation(block)
     if a.plain ~= b.plain then return a.plain end
     return a.suf < b.suf
   end)
+  -- a word can only match the rules whose suffix ends in its last letter
+  self.conjLast, self.conjLastF = {}, {}
+  for _, rule in ipairs(self.conj) do
+    local b, bf = byte(rule.suf, -1), byte(rule.sufF, -1)
+    self.conjLast[b] = self.conjLast[b] or {}
+    tinsert(self.conjLast[b], rule)
+    self.conjLastF[bf] = self.conjLastF[bf] or {}
+    tinsert(self.conjLastF[bf], rule)
+  end
 end
 
 -------------------------------------------------------------------------------
@@ -510,7 +528,7 @@ local function lookupKey(dir, key)
       if v ~= nil then return v end
     end
     local real = dir.L.fold[fk]
-    if real and foldAllowed(key, real) then return dir.map[real] end
+    if real and foldAllowed(key, real, dir.relaxFold) then return dir.map[real] end
   end
   return nil
 end
@@ -538,18 +556,22 @@ end
 
 -- Any conjugated form of a verb in the language's verb list.
 local function conjugate(L, word)
-  if #L.conj == 0 then return nil end
+  if #L.conj == 0 or word == "" then return nil end
   local fword = T.Fold(word)
+  local rulesTyped, rulesFolded = L.conjLast[byte(word, -1)], L.conjLastF[byte(fword, -1)]
   for pass = 1, 3 do
-    for _, rule in ipairs(L.conj) do
-      local w, suf
-      if pass == 1 then w, suf = word, rule.suf
-      elseif pass == 2 then if rule.plain then w, suf = fword, rule.sufF end
-      else if not rule.plain then w, suf = fword, rule.sufF end end
-      if w and #w > #suf + 1 and sub(w, -#suf) == suf then
-        local inf = sub(w, 1, -#suf - 1) .. rule.inf
-        local base = L.verbs[inf] or L.verbFold[T.Fold(inf)]
-        if base then return EN.Render(rule.tpl, base) end
+    local rules = (pass == 1) and rulesTyped or rulesFolded
+    if rules then
+      for _, rule in ipairs(rules) do
+        local w, suf
+        if pass == 1 then w, suf = word, rule.suf
+        elseif pass == 2 then if rule.plain then w, suf = fword, rule.sufF end
+        else if not rule.plain then w, suf = fword, rule.sufF end end
+        if w and #w > #suf + 1 and sub(w, -#suf) == suf then
+          local inf = sub(w, 1, -#suf - 1) .. rule.inf
+          local base = L.verbs[inf] or L.verbFold[T.Fold(inf)]
+          if base then return EN.Render(rule.tpl, base) end
+        end
       end
     end
   end
@@ -607,6 +629,28 @@ local function lookupWord(dir, word, noSqueeze)
   end
   return nil
 end
+
+--- Is this lower-case word ordinary English: a stopword, a word some
+-- dictionary translates into, or a noun or adjective English.lua knows?
+local function isEnglishLike(w)
+  if #w < 2 then return false end
+  if B.EnglishLexicon[w] or EN.Nouns[w] or EN.AttrAdj[w] then return true end
+  local en = B.Languages.en
+  return en ~= nil and en.stopwords[w] == true
+end
+
+--- The word with runs of three or more letters collapsed ("revoiiiir" ->
+-- "revoir"), cached on the atom; false when there is nothing to collapse.
+local function squeezed3(a)
+  if a.sq3 == nil then
+    a.sq3 = (a.lower:find("(.)%1") and T.Squeeze(a.lower)) or false
+  end
+  return a.sq3
+end
+
+-- The word-level lookups, for the fuzzy layer (Fuzzy.lua).
+B.Engine = { Lang = Lang, LookupKey = lookupKey, LookupWord = lookupWord,
+             StripSuffix = stripSuffix, Conjugate = conjugate }
 
 local function startsWithSubject(v)
   return v:match("^I[ ']") or v:match("^you[ ']") or v:match("^we[ ']") or v:match("^they[ ']")
@@ -737,9 +781,18 @@ local function glossSpan(dir, atoms, p, q, st)
         local value, last
         -- a phrase that starts with the pronoun wins: "se lance pas" = "won't start"
         for n = #run, 2, -1 do
-          local parts = {}
-          for m = 1, n do parts[m] = atoms[run[m]].lower end
+          local parts, stretched = {}, false
+          for m = 1, n do
+            local w = atoms[run[m]]
+            parts[m] = w.lower
+            if squeezed3(w) then stretched = true end
+          end
           local v = lookupKey(dir, tconcat(parts, " "))
+          if v == nil and stretched then
+            -- "au revoiiiir": the phrase with its stretched letters collapsed
+            for m = 1, n do parts[m] = atoms[run[m]].sq3 or parts[m] end
+            v = lookupKey(dir, tconcat(parts, " "))
+          end
           if v ~= nil then
             value, last = v, run[n]
             st.hits = st.hits + n
@@ -785,6 +838,18 @@ local function glossSpan(dir, atoms, p, q, st)
           end
           if v == nil and not dir.toEn and EN_ARTICLES[a.lower] then
             v = ""   -- an English article the target language has no word for
+          end
+          if v == nil and dir.toEn and a.kind == "word" and #a.lower > 1 and not neutral[a.lower] then
+            if isEnglishLike(a.lower) then
+              -- an English word inside a foreign line ("outlook est down"):
+              -- shown as it is, counted neither for nor against the translation
+              value, last = a.text, i
+              st.english = st.english + 1
+            elseif a.fuzzyValue ~= nil then
+              -- resolved by the fuzzy layer before this pass (a split
+              -- contraction or a compound, see fuzzyPrepass)
+              v, isVerb = a.fuzzyValue, a.fuzzyVerb
+            end
           end
           if v ~= nil then
             value, last = v, i
@@ -1084,15 +1149,71 @@ end
 --   templates    sentence templates applied
 --   reordered    noun/adjective swaps made
 --   conjugated   words read as conjugated verbs
+--   english      English words passed through (neither hits nor misses)
+--   fuzzy        words the fuzzy layer resolved (counted in hits as well)
 --   unknown      the missed words themselves (for /tongue missing)
+--   fuzzyOn      set on the pass that follows detection (see Fuzzy.lua)
 local function newStats()
-  return { hits = 0, misses = 0, phraseWords = 0, templates = 0, reordered = 0, conjugated = 0, unknown = {} }
+  return { hits = 0, misses = 0, phraseWords = 0, templates = 0, reordered = 0, conjugated = 0,
+           english = 0, fuzzy = 0, unknown = {} }
+end
+
+-- Does a dictionary phrase that starts at or before atoms[i] cover atoms[i]?
+local function insidePhrase(dir, atoms, i)
+  local q = #atoms
+  for j = math.max(1, i - dir.maxN + 1), i do
+    if isWordAtom(atoms[j]) then
+      local m = longestPhraseAt(dir, atoms, j, q)
+      if m > 1 then
+        local reach, k = j, 1
+        while k < m do
+          reach = reach + 1
+          if isWordAtom(atoms[reach]) then k = k + 1 end
+        end
+        if reach >= i then return true end
+      end
+    end
+  end
+  return false
+end
+
+-- The fuzzy pass begins by correcting the spelling of unknown words in
+-- place, so that the templates and phrases see the corrected line: "je
+-- cherhce un groupe" still meets "je cherche un groupe *". Words inside a
+-- known phrase, English words and neutral shorthand are left as they are;
+-- a resolution that is a translation rather than a spelling (a split
+-- contraction, a compound) is kept on the atom for the word lookup.
+local function fuzzyPrepass(dir, atoms, st)
+  local neutral = B.Neutral
+  for i, a in ipairs(atoms) do
+    if a.kind == "word" and #a.lower > 1 and not a.wide and not neutral[a.lower]
+       and not isEnglishLike(a.lower) and lookupWord(dir, a.lower) == nil
+       and not insidePhrase(dir, atoms, i) then
+      local first = (i == 1) or atoms[i - 1].kind == "clause"
+      local kind, res, isVerb = B.Fuzzy.Word(dir, a, first, st)
+      if kind == "key" then
+        a.corrected = a.lower
+        a.lower, a.fold = res, T.Fold(res)
+        st.fuzzy = st.fuzzy + 1
+      elseif kind == "value" then
+        a.fuzzyValue, a.fuzzyVerb = res, isVerb
+        st.fuzzy = st.fuzzy + 1
+      end
+    end
+  end
 end
 
 -- One pass over a whole line. atoms may be supplied to avoid re-atomising.
-local function runPass(dir, text, atoms, tail)
+-- With fuzzy set (the translation pass after detection) unknown words get
+-- the fuzzy layer and phrases typed without their accents are accepted.
+local function runPass(dir, text, atoms, tail, fuzzy)
   if not atoms then atoms, tail = T.Atomize(text) end
   local st = newStats()
+  if fuzzy and dir.toEn and B.Fuzzy then
+    st.fuzzyOn = true
+    dir.relaxFold = true
+    fuzzyPrepass(dir, atoms, st)
+  end
   local out = {}
   local n, p = #atoms, 1
   for i = 1, n + 1 do
@@ -1124,6 +1245,7 @@ local function runPass(dir, text, atoms, tail)
     end
   end
   out[#out + 1] = tail or ""
+  dir.relaxFold = nil
   return tconcat(out), st
 end
 
@@ -1139,7 +1261,8 @@ end
 -- @param from     source language code ("en" or a dictionary code)
 -- @param to       target language code
 -- @param english  optional: the line already rendered in English by the
---                 detector, so the first pass is not repeated
+--                 detector, so the first pass is not repeated, unless it
+--                 left unknown words, which get the fuzzy layer
 -- @param stats    optional: the statistics of that rendering
 -- @return translated text, coverage (0..1: share of words understood),
 --         hits, misses, stats; or nil when a language has no dictionary
@@ -1152,10 +1275,12 @@ function B:TranslateText(text, from, to, english, stats)
 
   local s, st = text, stats
   if L1 then
-    if english then
-      s = english            -- already explained during detection
+    if english and not (B.Fuzzy and st and st.misses > 0) then
+      s = english            -- already explained during detection, nothing unknown
     else
-      s, st = runPass(L1:DirTo(), text)
+      -- the fuzzy pass: the language is known, so unknown words may be
+      -- typos, SMS spellings or contractions (Fuzzy.lua)
+      s, st = runPass(L1:DirTo(), text, nil, nil, true)
     end
   end
   if L2 then

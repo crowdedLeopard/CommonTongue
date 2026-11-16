@@ -111,6 +111,16 @@ function T.Squeeze(word)
   return a, b
 end
 
+--- Collapse every run of three or more identical characters in a text
+-- ("Saluuuuut :)" -> "Salut :)"), so that stretched letters count as
+-- evidence of nothing. Returns the text itself when nothing collapses.
+-- @param s  UTF-8 string
+-- @return collapsed string
+function T.Collapse(s)
+  if not s:find("(.)%1%1") then return s end
+  return squeezeRuns(s, 3) or s
+end
+
 -------------------------------------------------------------------------------
 -- Plain text and loose keys
 -------------------------------------------------------------------------------

@@ -654,3 +654,24 @@ alguém vivo em * | alguem vivo em * | tem alguém vivo em * | tem alguem vivo e
 pago * no * | pago * na * | dou * no * | dou * na * | pago * nesse * | pago * nessa * = paying * for the *
 aceito * | aceito até * | aceito ate * | aceito a partir de * | fecho por * | fecho em * | fecho a * = I'll take *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Portuguese. The first candidate the dictionary knows wins.
+L:Respell([==[
+# naum, entaum
+aum$ > ao
+# SMS consonants: ki, ke, aki, kem
+k > qu
+k > c
+# x/ch, ss/s and final letters as heard: faze, muitu, noiti, oje
+x > ch
+ch > x
+ss > s
+s > ss
+$ > r
+$ > s
+u$ > o
+i$ > e
+^ > h
+]==])

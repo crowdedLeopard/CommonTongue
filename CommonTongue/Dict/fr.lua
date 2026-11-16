@@ -15,6 +15,7 @@ local L = B:RegisterLanguage("fr", "French", {
     cherche recherche besoin aide vends achète groupe guilde quête donjon niveau soigneur
     slt bjr bsr stp svp mdr ptdr tkt jsp qqn qqch pk pq bcp dsl dacc tjs tjrs mtn ajd tlm
     pcq jpp osef wesh bah ben bref voilà y'a ya t'es t'as j'suis chui dispo
+    le la l' de d' du un une en y ne qui que ce il elle on tu te se sur où a par ma ta sa mes tes ses
   ]==],
 })
 
@@ -2351,6 +2352,134 @@ règne | regne | on règne | on regne = reigns | we reign
 survit | survivre | on survit = survives | we survive
 en meute = as a pack
 seul, on avance | seul on avance = alone, we move forward
+
+# ---- v3 (2026-11-16): chat spellings, homographs and gaps from the real chat log ----
+# SMS and phonetic forms
+chai pas | chais pas | ché pas | chépa | chépas | chui pas sûr | je c pas | jc pas | chai po | chais po = I don't know
+chai | chais | ché = I know
+vla | v'la | vlà = here's | there's
+ya vla | y a vla | y'a vla | il y a vla = here's
+cava | sava | cv bien | cava bien | sava bien | cava et toi | sava et toi = how's it going | fine
+moui | mouais | mouai | mouaif | bof oui = meh | well yes
+dégroupe | degroupe | degroup | dégroup | dégroupe moi | degroupe moi | dégroupez | degroupez = leave the group
+kestufé | kestufe | kes tu fé | kes tu fais | kestufais | kestufai | qu'est ce que tu fais | qu'est-ce que tu fais | qu'est ce que tu fait | tu fais quoi | tu fé koi | tu fais koi = what are you doing
+t'es où | tes ou | t es ou | t'es ou | tes où | t'es où là = where are you
+y es-tu | y es tu | t'y es | tu y es | t'es là | tes la = are you there
+y a quelqu'un | y'a quelqu'un | ya quelqu'un | il y a quelqu'un | y a qqn | ya qqn | y'a qqn | ya kelkun | y a kelkun = is anyone there
+quoi de neuf | koi de neuf | quoi d'neuf | koi d'neuf | quoi de 9 | koi de 9 | kwa de neuf = what's new
+faim | la faim = hunger
+question | une question | la question = question
+questions | les questions | des questions = questions
+jai faim | j ai faim | g faim | jé faim | jai la dalle | g la dalle = I'm hungry
+# the à/a homograph: typed without its accent, "a" before a determiner or pronoun is "to"
+à ton avis | a ton avis | à votre avis | a votre avis = in your opinion
+on joue à | on joue a = we play
+je joue à | je joue a = I play
+jouer à | jouer a = to play
+demande à | demande a | demandez à | demandez a = ask
+sac à | sac a = bag of
+a avoir | à avoir = to have
+a faire | à faire = to do
+a voir | à voir = to see
+a dire | à dire = to say
+a prendre | à prendre = to take
+a vendre | à vendre = for sale
+a mon | a ma | a mes = to my
+a ton | a ta | a tes = to your
+a son | a sa | a ses = to his | to her
+a nos | a notre = to our
+a vos | a votre = to your
+a leur | a leurs = to their
+a ce | a cette | a ces | a cet = to this
+a un | a une = to a
+a quel | a quelle = to which
+a qui = to whom
+a quoi = to what
+a toi = to you | yours
+a moi = to me | mine
+a lui = to him
+a elle = to her
+a eux = to them
+a nous = to us
+a vous = to you
+a tous | a toutes = to everyone
+a zéro | a zero | à zéro = from scratch | to zero
+recommence à zéro | recommence a zero | je recommence à zéro | je recommence a zero | repart de zéro | repart de zero | je repars de zéro | je repars de zero | recommencer à zéro | recommencer a zero | repartir de zéro | repartir de zero = start from scratch | starting from scratch
+# client messages
+emplacement marqué sur la carte | emplacement marque sur la carte = location marked on the map
+emplacement | l'emplacement = location
+emplacements | les emplacements = locations
+marqué | marquée | marqués | marquées = marked
+marquer | marque sur la carte = mark
+# gaps
+terre | la terre = ground | earth
+par terre | part terre = on the ground
+terre à terre | terre a terre = down to earth
+poisson | poissons | le poisson | les poissons | du poisson = fish
+hauteur | la hauteur = height
+hauteurs | les hauteurs = heights
+prendre de la hauteur = get some height
+joie | la joie = joy
+dans la joie = joyfully
+rythme | le rythme | rhythme = pace | rhythm
+à son rythme | a son rythme | à ton rythme | a ton rythme | à votre rythme | a votre rythme = at your own pace
+connu | connue | connus | connues = known
+t'as connu | tu as connu | t as connu | vous avez connu = did you know
+compliqué | compliquée | compliqués | compliquées | compliquer = complicated
+catastrophique | catastrophiques = catastrophic | disastrous
+catastrophe | une catastrophe | la catastrophe = disaster
+effectivement = indeed
+repaire | le repaire | repaires = lair | den
+sentinelle | la sentinelle | sentinelles = sentinel
+sécuriser | securiser | sécurise | securise | sécurisez | securisez = secure
+civilisation | la civilisation = civilisation
+chaotique | chaotiques = chaotic
+gustatif | gustative = taste
+croissant | le croissant = croissant
+croissants | les croissants = croissants
+chocolatine | chocolatines | pain au chocolat | pains au chocolat = chocolate croissant
+s'étriper | s'etriper | étriper | etriper | vous étriper | vous etriper | se battre = fight it out | tear each other apart
+rigolo | rigolote | rigolos | rigolotes | marrant | marrante | marrants = funny
+fou | folle | fous | folles | ouf | un ouf = crazy
+franc = franc
+francs | les francs = francs
+maîtrise | maitrise | la maîtrise | la maitrise = mastery
+moment | le moment | un moment | ce moment = moment
+du moment que | du moment où | du moment ou = as long as
+raclette | la raclette = raclette
+triple | la triple | une triple = triple
+noir | noire | noirs | noires = black
+réserve | reserve | la réserve | la reserve | réserves = reserve | stash
+réserve volée | reserve volee | la réserve volée | la reserve volee = stolen stash
+volé | volée | volés | volées = stolen
+dérapage | derapage | le dérapage | le derapage = slip-up
+oula | oulah | oulala | oh la la | oh là là | ouh la | ouh là = whoa | oh dear
+intraveineuse | en intraveineuse | intraveineux | en intraveineux = intravenous
+vive | vivent = long live
+vive la | vive le | vive les | vivent les = long live
+troupeau | le troupeau | troupeaux | les troupeaux = herd
+protection du troupeau = protecting the herd
+protection | la protection | protections = protection
+cliché | clichés | le cliché | les clichés = cliché
+zéro | zero = zero
+expat | expats | expatrié | expatriée | expatriés = expat
+parcimonie | avec parcimonie = sparingly
+modération | moderation | avec modération | avec moderation = moderation
+monétaire | monetaire | monétaires = monetary
+mierda = shit
+yéti | yeti | le yéti | le yeti = yeti
+yétis | yetis | les yétis | les yetis = yetis
+wendigo | le wendigo = wendigo
+wendigos | les wendigos = wendigos
+barbe | la barbe = beard
+carrière | carriere | la carrière | la carriere | carrières = quarry | career
+plutôt | plutot | plutôt que | plutot que = rather
+réussi | reussi | réussie | reussie | réussis | reussis | réussit | reussit = succeeded | managed | done
+a réussi | a reussi | ont réussi | ont reussi | j'ai réussi | j'ai reussi | jai reussi = managed | succeeded
+réussir | reussir = to succeed | to manage
+sentent | ça sent | ca sent | sa sent = smell | smells
+menant | te menant | vous menant = leading
+écrit | ecrit | écrite | ecrite | a écrit | a ecrit | il a écrit | il a ecrit = wrote | written
 ]==])
 L:Reverse([==[
 hello | hi | hey = salut

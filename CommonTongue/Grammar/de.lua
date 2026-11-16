@@ -398,3 +398,21 @@ noch * dann weg | noch * dann bin ich weg | noch * dann geh ich | noch * dann is
 hier wird * gesprochen = * is spoken here
 wird * gesprochen = * is spoken
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- German. The first candidate the dictionary knows wins.
+L:Respell([==[
+# umlauts typed as two letters: fuer, schoen, maedchen
+ue > u
+ae > a
+oe > o
+# a dropped final letter: hab, nich, is, kannst
+$ > e
+$ > n
+$ > t
+# ck/k and ss: zurük, gros
+ck > k
+k > ck
+s$ > ss
+]==])

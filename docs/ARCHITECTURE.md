@@ -40,9 +40,10 @@ dictionary's reverse direction.
 | `Text.lua` | Accent folding, emphasis squeezing, plain text, loose keys, the atomiser. |
 | `English.lua` | English verb inflection, noun and adjective sets, post-editing. |
 | `Engine.lua` | Language registration, dictionary parsing, templates, phrases, word lookup, reordering, `TranslateText`. |
+| `Fuzzy.lua` | The fuzzy layer: apostrophe restoration, respelling rules, compound splitting and typo candidates for words no lookup knows, once the language is known. |
 | `Detect.lua` | Language detection by script and by explanation. |
 | `Dict/<code>.lua` | One file per language: stopwords, hints, suffixes, then `L:Add` and `L:Reverse` blocks. `Dict/en.lua` holds English stopwords and the neutral word list. |
-| `Grammar/<code>.lua` | Clitics, verbs, conjugation rules, sentence templates. |
+| `Grammar/<code>.lua` | Clitics, verbs, conjugation rules, sentence templates, respelling rules. |
 | `Memory.lua` | Translation memory, taught entries, missing-word counts. |
 | `Learned.lua` | Written by the companion; a stub in the shipped addon. |
 | `Bridge.lua` | The live bridge: slot addons, pending requests, chat-log flushing. |
@@ -75,19 +76,64 @@ Each clause is translated by `translateSpan`, a cascade:
    (plurals kept in English), elided (`l'entrée`), as a conjugated form of a
    listed verb (rendered from the English base by `English.lua`), and finally
    with repeated letters squeezed (`holaaaa`). Neutral shorthand with no entry
-   of its own is left alone, so `grats` is never a Danish plural.
+   of its own is left alone, so `grats` is never a Danish plural. An English
+   word inside a foreign line (`outlook est down`, `fake news`) is passed
+   through as it is and counts neither for nor against the translation.
 5. **Reordering**: noun + adjective becomes adjective + noun for languages
    that put adjectives after the noun; `potions of mana` becomes `mana potions`.
 
 The English result goes through `EN.PostEdit`, a set of conservative fixes
 for patterns that are wrong in every reading (`can to help`, `there is mobs`,
-`a elite`). A statistics record counts hits, misses and template or phrase
-words; **coverage** is hits over hits plus misses and decides whether a
-translation is shown at all.
+`a elite`). A statistics record counts hits, misses, template or phrase
+words, English words passed through and words the fuzzy layer resolved;
+**coverage** is hits over hits plus misses and decides whether a translation
+is shown at all. Phrases typed with stretched letters (`au revoiiiir`) are
+looked up with the letters collapsed as well.
 
 Languages written without spaces (Chinese, Japanese) are translated greedily
 by the longest dictionary key at each position, with their own templates
 compiled to Lua patterns.
+
+## The fuzzy layer
+
+Detection explains a line with plain lookups only. Once a language has won,
+`TranslateText` runs the line a second time with the fuzzy layer
+(`Fuzzy.lua`) if the explanation left unknown words. That pass begins by
+correcting unknown words **in place**, so the templates and phrases see the
+corrected line: `je cherhce un groupe` still meets `je cherche un groupe *`,
+and `koi de neuf` the phrase `quoi de neuf`. A word is unknown when no lookup
+knows it; words inside a known phrase, neutral shorthand, English words and
+capitalised words inside a clause (names; German, which capitalises every
+noun, is exempt) are left alone. For the rest, cheapest first, first hit wins:
+
+1. **Apostrophes**: `cest` becomes `c'est` and `daccord` `d'accord` when the
+   restored form is a key. `jregarde` becomes `j'` + `regarde`, "I look",
+   when a subject pronoun (`j'`, `c'`, `t'`, `qu'`) precedes a function word,
+   a verb form or part of a known `je ...` phrase, so that a word merely
+   missing from the dictionary (`joie`) is never read as `j'oie`.
+2. **Respelling rules** (`Lang:Respell` in the grammar file): `k > qu`,
+   `oa > oi`, `$ > x` (a silent final letter), `^ > h` (a dropped h), each
+   applied to the accent-folded word to make one candidate. French, Spanish,
+   Portuguese, Italian, German, Dutch, Swedish, Danish, Norwegian and Finnish
+   have rules.
+3. **Compounds** (German, Dutch, Swedish, Danish, Norwegian, Finnish): a word
+   of seven letters or more split into two content words, longest first part
+   first, with an optional linking `s`, `n`, `e` or `en`: `heilergruppe` is
+   "healer group", `groepsleider` "group leader".
+4. **Typo candidates** (five letters or more, at most four words per line):
+   two letters swapped, a letter doubled, a vowel or a neighbouring key
+   (QWERTY and AZERTY) hit instead, and from six letters a letter dropped or
+   a vowel left out, in that order. A candidate must keep the word's first
+   letter and be answered by an ordinary lookup (exact, folded,
+   suffix-stripped; conjugated for the cheap kinds). No index is built:
+   every candidate is a hash lookup, so the cost stays a fraction of a
+   millisecond for a line with a few unknown words.
+
+In the fuzzy pass a phrase typed without its accents is also accepted when it
+starts with an English stopword (`a ton avis` is `à ton avis`); the plain
+pass refuses that so English phrases never match foreign keys. The pass never
+runs during detection, so an English or neutral line never reaches it, and
+`/tongue missing` no longer lists English words.
 
 ## Detection
 
@@ -101,7 +147,9 @@ The top four candidates each **explain** the line by translating it; phrase
 and template matches weigh most. English competes with its own stopwords and
 with the lexicon of every English word the dictionaries produce, so English
 lines are left alone, and words that belong to every language (`lfg`, `tank`,
-`lol`) count for none.
+`lol`) count for none. Letter pairs are counted on the text with stretched
+letters collapsed, so `Saluuuuut` is not four Dutch `uu`. Detection never
+uses the fuzzy layer; it only runs for the language that has already won.
 
 The winner's score must beat a floor and one and a half times the English
 score; the confidence is its lead over the runner-up. Core then applies two
@@ -157,9 +205,11 @@ maintainers) and `flush` (set once a companion has been seen).
 ## Performance
 
 Measured with `tools/tests/ct_perf.py` on 3.2 MB of dictionaries, about
-151,000 keys over 17 languages: 0.73 s to load at login (inside the loading
-screen), 36 MB of Lua memory, 0.8 ms per new chat line. Nothing runs per
-frame; the only timers belong to the live bridge and fire while a line waits.
+151,000 keys over 17 languages: 0.75 s to load at login (inside the loading
+screen), 36.5 MB of Lua memory, 0.6 ms per new chat line (the conjugation
+rules are indexed by their last letter, which more than pays for the fuzzy
+pass). Nothing runs per frame; the only timers belong to the live bridge and
+fire while a line waits.
 
 ## Testing
 
@@ -171,9 +221,11 @@ package) with a stub of the client API (`wowstub.lua`):
 | `ct_unit.py` | pass/fail assertions for every module |
 | `run_tests.py` | loads, detects, translates, slash commands, leaked globals, timing |
 | `ct_check_all.py` | regression lines in every language, must report `misdetected: 0` |
+| `ct_fuzzy_check.py` | the fuzzy corpus `ct_fuzzy_cases.txt` (chat spellings from the real log): hit rate per category; its `UNTOUCHED` cases must all pass |
 | `ct_bridge_test.py` | the live bridge end to end with a fake companion |
 | `ct_parity.py` | the addon and the companion compute the same loose keys |
 | `ct_replay_log.py` | replays the client's real chat log with Core's exact decision |
+| `ct_replay_snapshot.py` | the same replay as one decision per line, to diff before and after an engine change |
 | `ct_missing_check.py` | which words saved as missing in-game are still unknown |
 | `ct_perf.py` | load time, memory, time per message |
 

@@ -162,7 +162,10 @@ function B:DetectLanguage(text, prior)
     return long >= 2 and plain:find("[\195-\197][\128-\191]") ~= nil
   end
 
-  -- cheap evidence for every Latin-script language
+  -- cheap evidence for every Latin-script language; letter pairs are counted
+  -- on the text with stretched letters collapsed, so that "Saluuuuut" is
+  -- not four Dutch "uu"
+  local hintText = T.Collapse(lowerText)
   local cands = {}
   for _, code in ipairs(B.LanguageOrder) do
     local L = B.Languages[code]
@@ -173,7 +176,7 @@ function B:DetectLanguage(text, prior)
         if hasEntry(L, a) then ev = ev + W_DICT end
       end
       for _, h in ipairs(L.hints) do
-        local n = countOccurrences(lowerText, h)
+        local n = countOccurrences(hintText, h)
         if n > 0 then
           -- an accented letter is a strong sign; a plain letter pair is not
           ev = ev + (h:find("[\128-\255]") and W_HINT or W_HINT_ASCII) * n

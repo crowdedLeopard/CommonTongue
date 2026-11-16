@@ -2012,6 +2012,8 @@ machts jut = take care
 # ---- slang pass (2026-11-13): de_10.txt ----
 # ---- replay pass (2026-11-13) ----
 gesprochen = spoken
+# ---- v3 (2026-11-16): the client's shared map pin line (localised string not verified against a deDE client) ----
+position der kartenmarkierung | kartenmarkierungsposition | kartenmarkierung | standort der kartenmarkierung | position auf der karte markiert = map pin location
 ]==])
 
 L:Reverse([==[
