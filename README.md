@@ -16,6 +16,15 @@ Green means a real translation service produced it; blue means the addon worked 
 
 Languages with built-in support: English, Spanish, Portuguese, German, French, Italian, Dutch, Swedish, Norwegian, Danish, Finnish, Polish, Turkish, Russian, Ukrainian, Chinese, Korean, Japanese.
 
+## Download
+
+Get the latest release from GitHub: https://github.com/crowdedLeopard/CommonTongue/releases/latest
+
+| File | Pick it when |
+|---|---|
+| `CommonTongue-<version>-full.zip` | You want everything: the addon, the optional live-translation companion and the installer. Unzip it anywhere and follow Install below. |
+| `CommonTongue-<version>.zip` | You only want the addon. Unzip it into `World of Warcraft\_forever_\Interface\AddOns`. That gives you the built-in engine and the translation memory, not the live bridge. |
+
 ## Install
 
 Run the installer from this folder:
