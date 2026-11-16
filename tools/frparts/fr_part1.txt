@@ -15,6 +15,7 @@ local L = B:RegisterLanguage("fr", "French", {
     cherche recherche besoin aide vends achète groupe guilde quête donjon niveau soigneur
     slt bjr bsr stp svp mdr ptdr tkt jsp qqn qqch pk pq bcp dsl dacc tjs tjrs mtn ajd tlm
     pcq jpp osef wesh bah ben bref voilà y'a ya t'es t'as j'suis chui dispo
+    le la l' de d' du un une en y ne qui que ce il elle on tu te se sur où a par ma ta sa mes tes ses
   ]==],
 })
 

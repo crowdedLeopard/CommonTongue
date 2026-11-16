@@ -404,3 +404,19 @@ hvem faen * | hvem i helvete * | kem faen * | hvem faen er * = who the hell *
 hvorfor faen * | hvorfor i helvete * | åffer faen * | koffer faen * | hvorfor faen er * = why the hell *
 typ * | sånn * | sånn ca * | ca * | cirka * | rundt * | omtrent * | sånn omtrent * | sånn typ * = about *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Norwegian. The first candidate the dictionary knows wins.
+L:Respell([==[
+# å æ ø typed as two letters: saa, haer, foer
+aa > a
+ae > a
+oe > o
+# a dropped final letter
+$ > r
+$ > t
+$ > e
+$ > n
+$ > g
+]==])

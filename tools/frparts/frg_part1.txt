@@ -178,3 +178,16 @@ skipper | skiper = skip
 spammer = spam
 focuser = focus
 dispeller = dispel
+# v3 (2026-11-16): verbs the real chat log used
+sentir = smell
+ressentir = feel
+mener = lead
+réussir | reussir = succeed
+détester | detester = hate
+découvrir | decouvrir = discover
+regretter = regret
+kiffer = love
+galérer | galerer = struggle
+ressusciter | ressuciter | rez = resurrect
+voler = steal
+crier = shout

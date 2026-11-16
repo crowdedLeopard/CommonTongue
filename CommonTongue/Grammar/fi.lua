@@ -536,3 +536,15 @@ missä vittu * | missä vitussa * | mis vitussa * | missä helvetissä * | mis h
 vedä käteen * | vedä käteen ja * | vedä vittu käteen * | painu vittuun * | painu helvettiin * | haista vittu * | haista paska * | haista home * | ime munaa * | nussi ittees * | nussi itseäs * | mee vittuun * = fuck off *
 oot paska * | sä oot paska * | oot ihan paska * | oot surkee * | sä oot surkee * | oot huono * | sä oot huono * | oot ihan huono * | oot heikko * | oot säälittävä * | oot nolo * | oot täys paska * = you're trash *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Finnish. The first candidate the dictionary knows wins.
+L:Respell([==[
+# a dropped final letter: mu, tää, joo
+$ > n
+$ > a
+$ > t
+$ > i
+$ > e
+]==])

@@ -392,3 +392,19 @@ nogen der kan booste * | kan nogen booste * | nogen der booster * | booster noge
 kan nogen heale * | nogen der kan heale * | nogen der healer * | healer nogen * | nogen der heal * = can anyone heal *
 kan nogen tanke * | nogen der kan tanke * | nogen der tanker * | tanker nogen * | nogen der tank * = can anyone tank *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Danish. The first candidate the dictionary knows wins.
+L:Respell([==[
+# å æ ø typed as two letters: saa, haer, foer
+aa > a
+ae > a
+oe > o
+# a dropped final letter
+$ > r
+$ > t
+$ > e
+$ > n
+$ > g
+]==])

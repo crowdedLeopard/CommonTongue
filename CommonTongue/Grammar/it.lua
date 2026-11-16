@@ -499,3 +499,18 @@ ma dai * | ma dai su * | ma dai raga * | ma dai però * = come on *
 ma va * | ma va' * | ma va là * | ma va la * | ma vah * | ma figurati * | ma figuriamoci * = no way *
 sta a * | stai a * | state a * | sto a * | stiamo a * | stanno a * = is at *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Italian. The first candidate the dictionary knows wins.
+L:Respell([==[
+# ke, perke, ki: k for ch
+k > ch
+k > c
+# a dropped final vowel or h: grazi, tutt, anno
+$ > e
+$ > o
+$ > a
+$ > i
+^ > h
+]==])

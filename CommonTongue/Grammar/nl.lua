@@ -399,3 +399,23 @@ wil je geen * praten = don't you want to speak *
 ik hoop dat je * hebt = I hope you have *
 ik hoop dat jullie * hebben = I hope you have *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Dutch. The first candidate the dictionary knows wins.
+L:Respell([==[
+# ei/ij, au/ou and g/ch spelt the other way
+ei > ij
+ij > ei
+au > ou
+ou > au
+ch > g
+g > ch
+# a dropped or hardened final letter: nie, kom, egt, wor
+$ > t
+$ > n
+$ > e
+$ > d
+d$ > t
+t$ > d
+]==])

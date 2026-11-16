@@ -435,3 +435,19 @@ köper * för * | köper * for * | koper * for * | köper * till * | köper * a 
 betalar * för * | betalar * for * | ger * för * | ger * for * | bjuder * för * | erbjuder * för * | ger dig * för * | ger er * för * = paying * for *
 säljer * för * | säljer * for * | saljer * for * | säljer * till * | säljer * a * | saljer * a * | säljer * styck för * | säljer * stacken för * = selling * for *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Swedish. The first candidate the dictionary knows wins.
+L:Respell([==[
+# å ä ö typed as two letters: saa, haer, foer
+aa > a
+ae > a
+oe > o
+# a dropped final letter: va, elle, nån
+$ > r
+$ > t
+$ > a
+$ > e
+$ > n
+]==])

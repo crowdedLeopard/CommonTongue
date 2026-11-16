@@ -415,3 +415,28 @@ no sabes * = you can't *
 quien tanquea * | quién tanquea * | quien tankea * | quién tankea * = who's tanking *
 voy de * = I'm going as *
 ]==])
+
+-- Respelling rules for the fuzzy layer (Fuzzy.lua): each makes one candidate
+-- from a word no lookup knows (accents folded), once the line is known to be
+-- Spanish. The first candidate the dictionary knows wins.
+L:Respell([==[
+# SMS consonants: ke, kiero, aki, tanke
+k > qu
+k > c
+# weno, wapo
+^w > bu
+^w > gu
+# seseo and b/v confusions: haser, bamos, yevar
+s > c
+c > s
+z > s
+b > v
+v > b
+y > ll
+ll > y
+# a dropped h or final letter: aora, verda, come
+^ > h
+$ > s
+$ > r
+$ > d
+]==])
