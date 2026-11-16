@@ -50,8 +50,10 @@ Built-in translation that copes with the way people really type in chat.
   fuzzy pass.
 
 ### Quality
-- Replaying the real chat log: 195 → 208 lines translated, 22 → 11 hidden,
-  9 → 8 without a language, every one of the 614 English lines unchanged.
+- Replaying the real chat log (911 distinct lines, same script with Core's
+  decision): 193 → 208 lines translated, 24 → 11 hidden, 9 → 8 without a
+  language, every one of the 614 English lines unchanged; all 11 lines still
+  hidden are junk.
   "Yéti, y es-tu ?", "vive la raclette", "La réserve volée de ...", "Oula le
   dérapage" and the map pin line are French now; "le pupu" is hidden.
 - Load 0.75 s, 36.5 MB of Lua memory, 0.59 ms per new chat line, nothing per
