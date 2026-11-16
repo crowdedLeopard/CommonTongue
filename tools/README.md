@@ -48,8 +48,12 @@ The scripts load the real addon in a Lua 5.1 runtime with a small WoW API stub
     python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_check_all.py   # regression lines in every language
     python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_parity.py .    # addon and companion compute the same keys
     python tools/tests/ct_bridge_test.py .                               # end-to-end live bridge (add --google to call the real endpoint)
+    python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_fuzzy_check.py  # the fuzzy corpus: hit rate per category (add -v for details)
 
-Expected: no "FAIL" lines, "0 misdetected" and "0 mismatches".
+Expected: no "FAIL" lines, "0 misdetected", "0 mismatches" and "0 negative
+case(s) failed". The fuzzy corpus (`ct_fuzzy_cases.txt`) holds the chat
+spellings seen in the real log, player names removed; add a case for every
+new mechanism or dictionary fix that came from a real line.
 
     python tools/tests/ct_perf.py CommonTongue                           # load time, Lua memory, ms per message
 
@@ -57,6 +61,11 @@ Two checks use what really happened in the game:
 
     python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_replay_log.py [chatlog] [since]   # replay the client's WoWChatLog.txt: what the addon showed, hid, missed
     python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_missing_check.py [SavedVariables]  # words saved as "missing" in-game that are still unknown
+    python tools/tests/ct_dbg.py CommonTongue tools/tests/ct_replay_snapshot.py <chatlog> <out.tsv>  # one decision per line, for diffing before/after a change
+
+Before an engine change, write a snapshot; after it, write another and diff
+the two: every changed line is a decision that changed. The snapshots hold
+other players' chat, so keep them out of the repository.
 
 The chat log is only written when the client flushes it (reload, logout, exit), so
 replay after a session, not during one.
@@ -67,6 +76,6 @@ replay after a session, not during one.
 two archives in `dist/` (the CurseForge upload with the addon folder only, and
 the full package with companion and installer).
 
-Measured on 2026-11-13 after the slang pass, with 3.1 MB of dictionaries
-(about 151,000 keys over 17 languages): 0.9 s to load, 36 MB of Lua memory,
-about 1 ms per new chat line. Nothing runs per frame.
+Measured on 2026-11-16 (v3, with the fuzzy layer), with 3.2 MB of
+dictionaries (about 151,000 keys over 17 languages): 0.75 s to load, 36.5 MB
+of Lua memory, 0.6 ms per new chat line. Nothing runs per frame.

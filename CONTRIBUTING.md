@@ -56,8 +56,9 @@ of `*` slots on both sides.
    stopwords, hints (letters that mark the language), suffixes the lookup may
    strip, and `adjAfterNoun` where adjectives follow the noun; then the
    `L:Add` and `L:Reverse` blocks.
-2. `CommonTongue/Grammar/<code>.lua`: clitics, verbs, conjugation rules and
-   templates. `tools/tests/ct_GRAMMAR_GUIDE.md` documents each block.
+2. `CommonTongue/Grammar/<code>.lua`: clitics, verbs, conjugation rules,
+   templates and the respelling rules the fuzzy layer tries on unknown words
+   (`L:Respell`). `tools/tests/ct_GRAMMAR_GUIDE.md` documents each block.
 3. Add both files to `CommonTongue.toc` (dictionaries before grammars), add
    regression lines to `tools/tests/ct_check_all.py`, and run the suite.
 

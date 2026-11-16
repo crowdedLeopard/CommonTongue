@@ -94,6 +94,21 @@ se = ~
 
 When one of these words stands directly before a conjugated verb, it is moved behind the verb as its object: `lo maté` → "I killed it", `la encuentro` → "I find it". Reflexives that repeat the subject are dropped (`me muero` → "I die"). `~` drops the word. A dictionary phrase always wins (`lo siento` stays "sorry"). Italian: lo la li le mi ti ci vi si; French: le la les me te nous vous se (plus `l'`, `m'`, `t'`, `s'`); Portuguese: o a os as me te nos se lhe.
 
+### 4. Respell, the chat spellings the fuzzy layer tries (engine v3)
+
+```
+L:Respell([==[
+k > qu          # every k becomes qu: koi -> quoi, kestion -> question
+oa > oi         # moa -> moi
+$ > x           # append a silent letter: mieu -> mieux
+^ > h           # prepend a dropped h: abitude -> habitude
+o$ > eau        # only at the end: bato -> bateau
+^w > bu         # only at the start: weno -> bueno
+]==])
+```
+
+Each rule turns a word that no lookup knows (lower case, accents already folded away) into one candidate, which is then looked up like any other word; rules are tried in order and the first candidate the dictionary knows wins. `from` is plain text, not a pattern, and every occurrence is replaced; `^` anchors the start, `$` the end, `$ > x` appends, `^ > h` prepends, `from > ~` removes. These rules only run once the line is known to be in your language (they never influence detection), so they can be bold: a rule that produces a word the dictionary does not know costs one failed lookup and nothing else. Write ten to twenty rules for the sounds and silent letters chat habitually respells in your language; typos (swapped, dropped, doubled letters) and glued pronouns (`jsuis`, `cest`) are handled generically and need no rules.
+
 ## Rules
 
 - Write ONLY `Grammar/xx.lua` for your language(s). You may also fix or extend your own `Dict/xx.lua` when testing shows a gap (missing common word, wrong primary English value, an article that should be dropped with `~`). Do not touch other files.
