@@ -1,0 +1,177 @@
+# Fuzzy corpus: the ways people really type in World of Warcraft chat, as seen
+# in the client's real chat log (player names and the junk lines removed).
+# tools/tests/ct_fuzzy_check.py replays every line with Core's decision and
+# prints the hit rate per category.
+#
+#   lang: input => expected          detected as lang, shown, and every
+#                                    " & "-separated fragment appears in the
+#                                    translation (case-insensitive)
+#   en: input => UNTOUCHED           the line must be left alone (English,
+#                                    neutral or undecided): a negative case
+#   ## heading                       starts a category
+
+## english words inside a foreign line
+fr: outlook est down alors du coup chomage technique => outlook is down
+fr: j'ai vérifié mes mails pour rien avec ta fake news => fake news
+fr: je cherche le sac a poisson dans la grotte please => bag & fish & please
+fr: need 1 tank pour la mine et go => need 1 tank for & go
+fr: salut regarde bien ta map tu as les emplacements => map & location
+fr: on prépare les futurs raids => future raids
+fr: je vais test le donjon ce soir => test & dungeon
+nl: technically it's niet lekker => technically it's not
+sv: vem har guild? => who has guild
+
+## typos: a letter dropped, doubled, swapped or next to the right key
+fr: je crois que la ville se tyrouve au sud => south & find
+fr: j'étais sur le serveru rp => server
+fr: du minde pour le donjon ? => people & dungeon
+fr: je cherhce un groupe pour la mine => looking for & group
+fr: je detestee ce donjon => hate
+fr: tu as regardé a la carriere ? => quarry
+fr: bienvenue aux aventiriers => adventurer
+fr: ah je ne suis pas le seul a avoir paser le cap => passed | take the plunge
+fr: il a ecrie le nom sur la map => wrote | write & map
+sv: varffor inte? => why not
+es: necesto un tanque para la mazmorra => need a tank
+es: alguein sabe donde esta la entrada => anyone know where
+de: ich brauche einen heiltrnak => potion
+
+## sms and phonetic spellings
+fr: cest bon arrête de spam => it's fine
+fr: jpense que cest la => I think
+fr: jregarde la map et je te dis => I look & map & tell
+fr: chai pas non plus => don't know
+fr: ya vla le monde ce soir => here's
+fr: koi de neuf => what
+fr: tkt ca va aller => don't worry
+fr: kestufé la => what are you doing
+fr: mieu vaut attendre le healer ici => better & wait
+fr: jsp si je viens => don't know
+fr: oue carrément => yes
+fr: on est tro fort => too strong
+fr: cava bien et toi => and you
+fr: kel niveau tu es => level
+fr: ki veut faire le donjon => who & dungeon
+fr: c koi ce truc => what
+es: kiero un tanke => want & tank
+es: aki estoy esperando => here & waiting
+it: perke non vieni => why & com
+de: ich bin so muede heute => exhausted | tired & today
+de: danke fuer die hilfe => thanks for the help
+es: ke tal la mazmorra => what's up | how & dungeon
+pt: naum sei onde fica => know & where
+pt: vc vai pra onde => you & where
+de: ich hab kein plan wo das is => no idea | don't know
+nl: egt waar? => really
+nl: idd => indeed | right
+
+## missing apostrophes
+fr: jsuis la => I'm
+fr: tes ou => where are you
+fr: faut quil vienne vite => that he | he comes | him
+fr: jai faim => hungry | hunger
+fr: cetait bien hier soir => it was & last night | yesterday evening
+fr: daccord je viens => ok & coming | come
+fr: jarrive dans deux minutes => coming & minutes
+it: nn lho visto => have it
+
+## dropped accents and the à/a homograph
+fr: ou est la carriere a l'est ? => where is & quarry & east
+fr: il a reussi la quete => quest & succeed | managed | done
+fr: a ton avis => in your opinion
+fr: plutot terre a terre => rather & down to earth
+fr: je recommence a zero => from scratch
+fr: on joue a wow => we play & wow
+fr: demande a une naine => ask
+es: que tal la mazmorra => what's up | how & dungeon
+pt: nao sei onde fica => know where
+
+## stretched letters
+fr: au revoiiiir aventurier => bye & adventurer
+fr: saluuuut a tous => hello everyone
+fr: merciiii beaucoup => thanks
+es: holaaaa amigos => hello
+fr: par ma barrrrbe de nain => beard & dwarf
+fr: Saluuuuuuuut :) => hello
+fr: bonjouuuur tout le monde => hello everyone
+
+## compounds (germanic languages)
+de: ich suche eine heilergruppe => healer group
+de: ich habe einen questgegenstand gefunden => quest item
+de: wo ist der mineneingang => mine entrance
+nl: wie is de groepsleider => group leader
+sv: säljer järnmalm billigt => iron ore
+fi: missä on ryhmänjohtaja => group leader
+
+## dictionary gaps found in the log
+fr: elles sentent le poisson => smell & fish
+fr: tu devrais voir une quete te menant vers le lac => lead | leading & quest
+fr: c'est compliqué de prendre de la hauteur => complicated & height
+fr: chacun avance à son rythme => pace | rhythm
+fr: c'est catastrophique, j'adore => catastrophic | disastrous
+fr: effectivement, merci bcp => indeed & thanks
+fr: le repaire des trolls => lair | den
+fr: la quete de la sentinelle dans la grotte => sentinel & cave
+fr: t'as connu les anciens ? => know | knew
+fr: nej, vive la raclette => long live
+fr: oula le dérapage => whoa
+fr: dans la joie => joy
+fr: degroup on vous invite => leave the group & invite
+fr: bonsoir, qqn a réussi la quete ? => anyone & quest
+sv: nej tyvärr => no unfortunately
+fr: emplacement marqué sur la carte => location marked on the map
+
+## detection: french lines that used to be read as spanish, italian or german
+fr: |A:Waypoint-MapPin-ChatIcon:13:13:0:0|a Emplacement marqué sur la carte => location marked on the map
+fr: Yéti, y es-tu ? => are you there
+fr: vive la raclette => long live
+fr: VIVE LA FRANCE => long live
+fr: Oula le dérapage => whoa
+fr: Protection du troupeau => protecting the herd | protection of the herd
+fr: La réserve volée de Tundra MacGrann => stolen stash
+fr: en intraveineuse => intravenous
+de: Position der Kartenmarkierung => map pin location
+es: Ubicación de marcador de mapa => map pin location
+
+## detection must stay sharp for the neighbouring languages
+es: la mina esta llena de mobs => mine & full
+es: busco grupo para la mazmorra de la muerte => looking for group
+es: alguien me ayuda con la mision en el bosque => help & quest
+it: cerco un gruppo per la miniera => group & mine
+it: dove si trova la locanda => where
+pt: alguém sabe onde fica a entrada da mina => where & entrance
+pt: estou na entrada do calabouço => entrance
+nl: ik zoek een groep voor de mijn => group
+de: ich suche eine gruppe für die mine => group
+
+## negative: english and neutral lines stay untouched
+en: looking for a tank for deadmines => UNTOUCHED
+en: anyone selling wool cloth? => UNTOUCHED
+en: lol no way, that mob one shot me again => UNTOUCHED
+en: gg wp everyone => UNTOUCHED
+en: can someone inv me pls => UNTOUCHED
+en: omw to the entrance, wait for me => UNTOUCHED
+en: ty for the run guys => UNTOUCHED
+en: wtb 20 linen cloth => UNTOUCHED
+en: brb bio => UNTOUCHED
+en: a => UNTOUCHED
+en: :D => UNTOUCHED
+en: outlook is down => UNTOUCHED
+en: mention war theyll dissapear => UNTOUCHED
+en: GOOOOOOD MORNING EVERYONE => UNTOUCHED
+en: anvanced otpions -> enable => UNTOUCHED
+en: LFG Tundra MacGrann's Stolen Stash => UNTOUCHED
+en: need healer for rfc, we are at the entrance => UNTOUCHED
+en: the quest is in the cave => UNTOUCHED
+en: i need to pass the door => UNTOUCHED
+en: see you later, have a nice day => UNTOUCHED
+en: can you heal me please => UNTOUCHED
+en: thx for the invite, omw => UNTOUCHED
+en: whats the price for a stack of linen => UNTOUCHED
+en: my bad, pulled too early => UNTOUCHED
+en: anyone know where the trainer is => UNTOUCHED
+en: nice one bro, that was ez => UNTOUCHED
+en: ta mate, see you at the raid later x => UNTOUCHED
+en: yo anyone up for a dungeon run? kinda cringe to solo it => UNTOUCHED
+en: selling iron ore and silk, pst => UNTOUCHED
+en: ok team lets go => UNTOUCHED

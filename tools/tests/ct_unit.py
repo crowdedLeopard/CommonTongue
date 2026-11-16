@@ -172,6 +172,64 @@ check("HandleSlash status shows version", any("v" + str(G.__tocVersion) in p for
 check("Bridge status without slots", "not installed" in Bridge.Status(Bridge))
 check("Version comes from the TOC", B.Version == G.__tocVersion, B.Version)
 
+# ---------------------------------------------------------------- Fuzzy
+Fz = B.Fuzzy
+MAP_PIN = "|A:Waypoint-MapPin-ChatIcon:13:13:0:0|a Emplacement marqué sur la carte"
+
+
+def fuzzy(lang, w):
+    """What the fuzzy layer makes of a single word of that language."""
+    Lg = B.Languages[lang]
+    d = Lg.DirTo(Lg)
+    atoms = tup(T.Atomize(w))[0]
+    return tup(Fz.Word(d, atoms[1], True, L.table()))
+
+
+def stats(text, lang):
+    return tup(B.TranslateText(B, text, lang, "en"))[4]
+
+
+cands = [(c[1], c[2]) for c in list(Fz.Candidates("minde").values())]
+check("Fuzzy.Candidates swaps first", cands[0][1] == "swap", cands[:2])
+check("Fuzzy.Candidates has the neighbouring key", ("monde", "subst") in cands)
+check("Fuzzy.Candidates no dropped letter below six letters", all(k != "drop" for _, k in cands))
+check("Fuzzy.Candidates drops a letter in longer words", any(k == "drop" for _, k in [(c[1], c[2]) for c in list(Fz.Candidates("tyrouve").values())]))
+check("Fuzzy typo: dropped letter", fuzzy("fr", "tyrouve")[:2] == ("key", "trouve"), fuzzy("fr", "tyrouve"))
+check("Fuzzy typo: doubled letter", fuzzy("fr", "paser")[:2] == ("key", "passer"), fuzzy("fr", "paser"))
+check("Fuzzy typo: swapped letters", fuzzy("fr", "cherhce")[:2] == ("key", "cherche"), fuzzy("fr", "cherhce"))
+check("Fuzzy typo keeps the first letter", fuzzy("nl", "demande")[0] is None, fuzzy("nl", "demande"))
+check("Fuzzy apostrophe: dictionary key", fuzzy("fr", "cetait")[:2] == ("key", "c'etait"), fuzzy("fr", "cetait"))
+check("Fuzzy apostrophe: pronoun + verb", fuzzy("fr", "jregarde")[:2] == ("value", "I look"), fuzzy("fr", "jregarde"))
+check("Fuzzy respell k -> qu", fuzzy("fr", "kestion")[:2] == ("key", "question"), fuzzy("fr", "kestion"))
+check("Fuzzy respell spanish", fuzzy("es", "aki")[:2] == ("key", "aqui"), fuzzy("es", "aki"))
+check("Fuzzy respell german umlaut", fuzzy("de", "muede")[:2] == ("key", "mude"), fuzzy("de", "muede"))
+check("Fuzzy compound", fuzzy("de", "heilergruppe")[:2] == ("value", "healer group"), fuzzy("de", "heilergruppe"))
+check("Fuzzy compound with linking letter", fuzzy("nl", "groepsleider")[:2] == ("value", "group leader"), fuzzy("nl", "groepsleider"))
+check("Fuzzy leaves a name alone", fuzzy("fr", "Kharanos")[0] is None or "Kharanos" in translate("je t'attends à Kharanos", "fr"))
+out = translate("je cherhce un groupe pour la mine", "fr")
+check("Fuzzy correction feeds the template", out.lower().startswith("i'm looking for a group"), out)
+out = translate("du minde pour le donjon", "fr")
+check("Fuzzy correction feeds the phrase", out.lower().startswith("people"), out)
+check("Fuzzy counted in stats", stats("je cherhce un groupe", "fr")["fuzzy"] == 1)
+check("Fuzzy never runs during detection", "cherhce" in (tup(B.DetectLanguage(B, "je cherhce un groupe pour la mine"))[2] or ""))
+out = translate("ta map est down", "fr")
+check("Engine passes English words through", out == "your map is down", out)
+st = stats("ta map est down", "fr")
+check("Engine English words count as neither hit nor miss", st["english"] == 2 and st["misses"] == 0 and st["hits"] == 2, dict(st))
+out = translate("au revoiiiir aventurier", "fr")
+check("Engine phrase with stretched letters", out.lower().startswith("bye"), out)
+out = translate("wir spielten gestern zusammen", "de")
+check("Engine conjugation rules indexed by last letter", "played" in out, out)
+check("Text.Collapse", T.Collapse("Saluuuuut :)") == "Salut :)" and T.Collapse("hello") == "hello", T.Collapse("Saluuuuut :)"))
+check("Text.PlainText strips atlas markup", T.PlainText(MAP_PIN) == " Emplacement marqué sur la carte", T.PlainText(MAP_PIN))
+check("Detect map pin line is French", detect(MAP_PIN) == "fr", detect(MAP_PIN))
+out = translate(MAP_PIN, "fr")
+check("Engine map pin line", "location marked on the map" in out and out.startswith("|A:"), out)
+check("Detect stretched letters are not hints", detect("Saluuuuuuuut :)") == "fr", detect("Saluuuuuuuut :)"))
+check("Detect french function words", detect("la réserve volée de Tundra MacGrann") == "fr", detect("la réserve volée de Tundra MacGrann"))
+check("Detect spanish still spanish", detect("la mina esta llena de mobs") == "es" and detect("busco grupo para la mazmorra de la muerte") == "es")
+check("Detect english with french-looking words", detect("the quest is in the cave") == "en" and detect("i need to pass the door") == "en")
+
 # ---------------------------------------------------------------- chat filter end to end
 chat = G.__chat
 shown = chat("CHAT_MSG_SAY", "busco grupo para la mazmorra")

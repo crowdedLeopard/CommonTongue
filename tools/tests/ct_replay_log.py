@@ -84,7 +84,7 @@ for k in order:
             english += 1  # neutral: numbers, "lol", "inv pls"
         continue
     translated, cov = translate(text, lang, eng, stats)
-    shaky = conf < 0.3 and cov < 0.6
+    shaky = (conf < 0.3 and cov < 0.6) or (conf < 0.1 and cov < 0.8)  # Core.lua's rule
     nonblank = bool(translated) and translated.strip() != ""
     ok = nonblank and not shaky and cov >= MINC and translated.lower() != text.lower()
     if translated and conf >= 0.5 and cov >= 0.5:
